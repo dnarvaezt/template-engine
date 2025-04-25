@@ -1,7 +1,11 @@
 import { Button, message, Space } from 'antd'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Category, CategoryRepositoryImpl, CategoryServiceImpl } from '../../infrastructure'
+import {
+  Category,
+  CategoryRepositoryImpl,
+  CategoryServiceImpl,
+} from '../../infrastructure'
 import { DeleteCategoryButton } from '../components/delete-category-button'
 import { CategoryBasePath } from './category-router'
 

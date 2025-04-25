@@ -43,8 +43,6 @@ export default [
       // Reglas de TypeScript
       '@typescript-eslint/explicit-module-boundary-types': 'off',
 
-
-
       // Reglas de React Hooks
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',

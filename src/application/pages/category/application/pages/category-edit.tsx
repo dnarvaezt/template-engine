@@ -1,7 +1,10 @@
 import { message } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { CategoryRepositoryImpl, CategoryServiceImpl } from '../../infrastructure'
+import {
+  CategoryRepositoryImpl,
+  CategoryServiceImpl,
+} from '../../infrastructure'
 import { CategoryForm } from '../components/category-form'
 import { CategoryBasePath } from './category-router'
 

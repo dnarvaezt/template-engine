@@ -1,7 +1,11 @@
 import { Button, message } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Category, CategoryRepositoryImpl, CategoryServiceImpl } from '../../infrastructure'
+import {
+  Category,
+  CategoryRepositoryImpl,
+  CategoryServiceImpl,
+} from '../../infrastructure'
 import { CategoryTable } from '../components/category-table'
 import { CategoryBasePath } from './category-router'
 

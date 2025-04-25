@@ -1,8 +1,8 @@
-import 'antd/dist/reset.css'
-import './app.scss'
 import { ConfigProvider } from 'antd'
+import 'antd/dist/reset.css'
 import esES from 'antd/locale/es_ES'
 import { BrowserRouter } from 'react-router-dom'
+import './app.scss'
 import { AppRoutes } from './routes/routes'
 
 export const App = () => {
