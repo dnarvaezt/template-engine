@@ -1,10 +1,10 @@
-import js from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tseslintParser from '@typescript-eslint/parser';
-import importPlugin from 'eslint-plugin-import';
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import globals from 'globals';
+import js from '@eslint/js'
+import tseslint from '@typescript-eslint/eslint-plugin'
+import tseslintParser from '@typescript-eslint/parser'
+import importPlugin from 'eslint-plugin-import'
+import reactPlugin from 'eslint-plugin-react'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import globals from 'globals'
 
 export default [
   js.configs.recommended,
@@ -43,13 +43,18 @@ export default [
       // Reglas de TypeScript
       '@typescript-eslint/explicit-module-boundary-types': 'off',
 
-
-
       // Reglas de importación
       'import/order': [
         'error',
         {
-          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
           'newlines-between': 'always',
           alphabetize: {
             order: 'asc',
@@ -73,4 +78,4 @@ export default [
       },
     },
   },
-];
+]

@@ -4,14 +4,20 @@ import { Category } from '../../infrastructure'
 import { DeleteCategoryButton } from './DeleteCategoryButton'
 
 interface CategoryTableProps {
-  categories: Category[];
-  onView: (category: Category) => void;
-  onEdit: (category: Category) => void;
-  onDelete: (category: Category) => void;
-  onSuccess?: () => void;
+  categories: Category[]
+  onView: (category: Category) => void
+  onEdit: (category: Category) => void
+  onDelete: (category: Category) => void
+  onSuccess?: () => void
 }
 
-export const CategoryTable: React.FC<CategoryTableProps> = ({ categories, onView, onEdit, onDelete, onSuccess }) => {
+export const CategoryTable: React.FC<CategoryTableProps> = ({
+  categories,
+  onView,
+  onEdit,
+  onDelete,
+  onSuccess,
+}) => {
   const columns = [
     {
       title: 'Nombre',
@@ -33,7 +39,7 @@ export const CategoryTable: React.FC<CategoryTableProps> = ({ categories, onView
         </Space>
       ),
     },
-  ];
+  ]
 
   return (
     <Table
@@ -42,5 +48,5 @@ export const CategoryTable: React.FC<CategoryTableProps> = ({ categories, onView
       rowKey="id"
       pagination={{ pageSize: 10 }}
     />
-  );
-};
+  )
+}

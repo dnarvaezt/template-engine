@@ -1,19 +1,24 @@
 import { message } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { CategoryRepositoryImpl, CategoryServiceImpl } from '../../infrastructure'
+import {
+  CategoryRepositoryImpl,
+  CategoryServiceImpl,
+} from '../../infrastructure'
 import { CategoryForm } from '../components/CategoryForm'
 import { CategoryBasePath } from './CategoryRouter'
 
-const repository = new CategoryRepositoryImpl();
-const categoryService = new CategoryServiceImpl(repository);
+const repository = new CategoryRepositoryImpl()
+const categoryService = new CategoryServiceImpl(repository)
 
 interface CategoryFormValues {
-  name: string;
+  name: string
 }
 
 export const CategoryEdit: React.FC = () => {
-  const [initialValues, setInitialValues] = useState<CategoryFormValues | undefined>()
+  const [initialValues, setInitialValues] = useState<
+    CategoryFormValues | undefined
+  >()
   const [loading, setLoading] = useState(false)
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
@@ -21,30 +26,30 @@ export const CategoryEdit: React.FC = () => {
   useEffect(() => {
     const fetchCategory = async () => {
       if (!id) {
-        message.error('ID de categoría no válido');
-        navigate(CategoryBasePath);
-        return;
+        message.error('ID de categoría no válido')
+        navigate(CategoryBasePath)
+        return
       }
 
       try {
-        setLoading(true);
-        const category = await categoryService.getCategoryById(id);
+        setLoading(true)
+        const category = await categoryService.getCategoryById(id)
         if (category) {
-          setInitialValues({ name: category.name });
+          setInitialValues({ name: category.name })
         } else {
-          message.error('Categoría no encontrada');
-          navigate(CategoryBasePath);
+          message.error('Categoría no encontrada')
+          navigate(CategoryBasePath)
         }
       } catch (error) {
-        console.error('Error al cargar categoría:', error);
-        message.error('Error al cargar la categoría');
-        navigate(CategoryBasePath);
+        console.error('Error al cargar categoría:', error)
+        message.error('Error al cargar la categoría')
+        navigate(CategoryBasePath)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     }
 
-    fetchCategory();
+    fetchCategory()
   }, [id, navigate])
 
   const handleCancel = () => {
@@ -52,25 +57,27 @@ export const CategoryEdit: React.FC = () => {
   }
 
   const handleFinish = async (values: CategoryFormValues) => {
-    if (!id) return;
+    if (!id) return
 
     try {
-      setLoading(true);
-      const category = await categoryService.getCategoryById(id);
+      setLoading(true)
+      const category = await categoryService.getCategoryById(id)
       if (category) {
-        const updatedCategory = category.updateName(values.name);
-        await categoryService.updateCategory(updatedCategory);
-        message.success('Categoría actualizada exitosamente');
-        navigate(CategoryBasePath);
+        const updatedCategory = category.updateName(values.name)
+        await categoryService.updateCategory(updatedCategory)
+        message.success('Categoría actualizada exitosamente')
+        navigate(CategoryBasePath)
       } else {
-        message.error('Categoría no encontrada');
-        navigate(CategoryBasePath);
+        message.error('Categoría no encontrada')
+        navigate(CategoryBasePath)
       }
     } catch (error) {
-      console.error('Error al actualizar categoría:', error);
-      message.error('Error al actualizar la categoría. Por favor, intente nuevamente.');
+      console.error('Error al actualizar categoría:', error)
+      message.error(
+        'Error al actualizar la categoría. Por favor, intente nuevamente.'
+      )
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
@@ -82,5 +89,5 @@ export const CategoryEdit: React.FC = () => {
       onFinish={handleFinish}
       loading={loading}
     />
-  );
-};
+  )
+}

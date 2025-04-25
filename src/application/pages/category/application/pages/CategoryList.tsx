@@ -1,37 +1,41 @@
 import { Button, message } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Category, CategoryRepositoryImpl, CategoryServiceImpl } from '../../infrastructure'
+import {
+  Category,
+  CategoryRepositoryImpl,
+  CategoryServiceImpl,
+} from '../../infrastructure'
 import { CategoryTable } from '../components/CategoryTable'
 import { CategoryBasePath } from './CategoryRouter'
 
-const repository = new CategoryRepositoryImpl();
-const categoryService = new CategoryServiceImpl(repository);
+const repository = new CategoryRepositoryImpl()
+const categoryService = new CategoryServiceImpl(repository)
 
 export const CategoryList: React.FC = () => {
-  const navigate = useNavigate();
-  const [categories, setCategories] = useState<Category[]>([]);
+  const navigate = useNavigate()
+  const [categories, setCategories] = useState<Category[]>([])
 
   const loadCategories = async () => {
     try {
-      const data = await categoryService.getAllCategories();
-      setCategories(data);
+      const data = await categoryService.getAllCategories()
+      setCategories(data)
     } catch (error) {
-      message.error('Error al cargar las categorías');
+      message.error('Error al cargar las categorías')
     }
-  };
+  }
 
   useEffect(() => {
-    loadCategories();
-  }, []);
+    loadCategories()
+  }, [])
 
   const handleView = (category: Category) => {
-    navigate(`${CategoryBasePath}/${category.id}`);
-  };
+    navigate(`${CategoryBasePath}/${category.id}`)
+  }
 
   const handleEdit = (category: Category) => {
-    navigate(`${CategoryBasePath}/${category.id}/edit`);
-  };
+    navigate(`${CategoryBasePath}/${category.id}/edit`)
+  }
 
   return (
     <div>
@@ -52,5 +56,5 @@ export const CategoryList: React.FC = () => {
         onSuccess={loadCategories}
       />
     </div>
-  );
-};
+  )
+}

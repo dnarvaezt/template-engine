@@ -15,5 +15,5 @@ export const CategoryRoutes: React.FC = () => {
       <Route path="/:id" element={<CategoryDetail />} />
       <Route path="/:id/edit" element={<CategoryEdit />} />
     </Routes>
-  );
-};
+  )
+}

@@ -1,15 +1,19 @@
 import { message } from 'antd'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Category, CategoryRepositoryImpl, CategoryServiceImpl } from '../../infrastructure'
+import {
+  Category,
+  CategoryRepositoryImpl,
+  CategoryServiceImpl,
+} from '../../infrastructure'
 import { CategoryForm } from '../components/CategoryForm'
 import { CategoryBasePath } from './CategoryRouter'
 
-const repository = new CategoryRepositoryImpl();
-const categoryService = new CategoryServiceImpl(repository);
+const repository = new CategoryRepositoryImpl()
+const categoryService = new CategoryServiceImpl(repository)
 
 interface CategoryFormValues {
-  name: string;
+  name: string
 }
 
 export const CategoryCreate: React.FC = () => {
@@ -23,13 +27,15 @@ export const CategoryCreate: React.FC = () => {
   const handleFinish = async (values: CategoryFormValues) => {
     try {
       setLoading(true)
-      const newCategory = new Category({ name: values.name });
-      await categoryService.createCategory(newCategory);
-      message.success('Categoría creada exitosamente');
-      navigate(CategoryBasePath);
+      const newCategory = new Category({ name: values.name })
+      await categoryService.createCategory(newCategory)
+      message.success('Categoría creada exitosamente')
+      navigate(CategoryBasePath)
     } catch (error) {
-      console.error('Error al crear categoría:', error);
-      message.error('Error al crear la categoría. Por favor, intente nuevamente.');
+      console.error('Error al crear categoría:', error)
+      message.error(
+        'Error al crear la categoría. Por favor, intente nuevamente.'
+      )
     } finally {
       setLoading(false)
     }
@@ -42,5 +48,5 @@ export const CategoryCreate: React.FC = () => {
       onFinish={handleFinish}
       loading={loading}
     />
-  );
-};
+  )
+}

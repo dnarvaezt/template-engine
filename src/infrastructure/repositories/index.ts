@@ -1,1 +1,1 @@
-export * from './BaseRepository';
+export * from './BaseRepository'

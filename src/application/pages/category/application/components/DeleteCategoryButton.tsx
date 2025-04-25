@@ -1,40 +1,47 @@
 import { Button, message, Modal } from 'antd'
 import React, { useState } from 'react'
-import { Category, CategoryRepositoryImpl, CategoryServiceImpl } from '../../infrastructure'
+import {
+  Category,
+  CategoryRepositoryImpl,
+  CategoryServiceImpl,
+} from '../../infrastructure'
 
 const repository = new CategoryRepositoryImpl()
 const categoryService = new CategoryServiceImpl(repository)
 
 interface DeleteCategoryButtonProps {
-  category: Category;
-  onSuccess?: () => void;
+  category: Category
+  onSuccess?: () => void
 }
 
-export const DeleteCategoryButton: React.FC<DeleteCategoryButtonProps> = ({ category, onSuccess }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+export const DeleteCategoryButton: React.FC<DeleteCategoryButtonProps> = ({
+  category,
+  onSuccess,
+}) => {
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const showModal = () => {
-    setIsModalVisible(true);
-  };
+    setIsModalVisible(true)
+  }
 
   const handleDelete = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
-      await categoryService.deleteCategory(category.id);
-      message.success('Categoría eliminada exitosamente');
-      setIsModalVisible(false);
-      onSuccess?.();
+      await categoryService.deleteCategory(category.id)
+      message.success('Categoría eliminada exitosamente')
+      setIsModalVisible(false)
+      onSuccess?.()
     } catch (error) {
-      message.error('Error al eliminar la categoría');
+      message.error('Error al eliminar la categoría')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+    setIsModalVisible(false)
+  }
 
   return (
     <>
@@ -50,8 +57,10 @@ export const DeleteCategoryButton: React.FC<DeleteCategoryButtonProps> = ({ cate
         cancelText="Cancelar"
         confirmLoading={isLoading}
       >
-        <p>¿Estás seguro de que deseas eliminar la categoría "{category.name}"?</p>
+        <p>
+          ¿Estás seguro de que deseas eliminar la categoría "{category.name}"?
+        </p>
       </Modal>
     </>
-  );
-};
+  )
+}

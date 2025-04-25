@@ -11,5 +11,5 @@ export const AppRoutes: React.FC = () => {
       <Route path="/" element={<Navigate to={CategoryBasePath} replace />} />
       <Route path={`${CategoryBasePath}/*`} element={<CategoryRoutes />} />
     </Routes>
-  );
-};
+  )
+}

@@ -2,15 +2,15 @@ import { Button, Card, Form, Input, Space, Typography } from 'antd'
 import React, { useEffect } from 'react'
 
 interface CategoryFormValues {
-  name: string;
+  name: string
 }
 
 interface CategoryFormProps {
-  onCancel: () => void;
-  onFinish: (values: CategoryFormValues) => void;
-  initialValues?: CategoryFormValues;
-  title: string;
-  loading?: boolean;
+  onCancel: () => void
+  onFinish: (values: CategoryFormValues) => void
+  initialValues?: CategoryFormValues
+  title: string
+  loading?: boolean
 }
 
 export const CategoryForm: React.FC<CategoryFormProps> = ({
@@ -20,22 +20,22 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   title,
   loading = false,
 }) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   useEffect(() => {
     if (initialValues) {
-      form.setFieldsValue(initialValues);
+      form.setFieldsValue(initialValues)
     }
-  }, [initialValues, form]);
+  }, [initialValues, form])
 
   const handleSubmit = async () => {
     try {
-      const values = await form.validateFields();
-      onFinish(values);
+      const values = await form.validateFields()
+      onFinish(values)
     } catch (error) {
-      console.error('Validation failed:', error);
+      console.error('Validation failed:', error)
     }
-  };
+  }
 
   return (
     <Card>
@@ -46,11 +46,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             <Button onClick={onCancel} disabled={loading}>
               Cancelar
             </Button>
-            <Button
-              type="primary"
-              onClick={handleSubmit}
-              loading={loading}
-            >
+            <Button type="primary" onClick={handleSubmit} loading={loading}>
               Guardar
             </Button>
           </Space>
@@ -67,11 +63,15 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             rules={[
               { required: true, message: 'Por favor ingrese el nombre' },
               { min: 3, message: 'El nombre debe tener al menos 3 caracteres' },
-              { max: 50, message: 'El nombre no puede exceder los 50 caracteres' },
+              {
+                max: 50,
+                message: 'El nombre no puede exceder los 50 caracteres',
+              },
               {
                 pattern: /^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ]+$/,
-                message: 'El nombre solo puede contener letras, números y espacios'
-              }
+                message:
+                  'El nombre solo puede contener letras, números y espacios',
+              },
             ]}
           >
             <Input
@@ -83,5 +83,5 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
         </Form>
       </Space>
     </Card>
-  );
-};
+  )
+}
