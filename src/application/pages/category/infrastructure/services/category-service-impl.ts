@@ -1,7 +1,6 @@
-import { Category } from '../models/Category'
-import { CategoryRepository } from '../repositories/CategoryRepository'
-
-import { CategoryService } from './CategoryService'
+import { Category } from '../models/category'
+import { CategoryRepository } from '../repositories/category-repository'
+import { CategoryService } from './category-service'
 
 export class CategoryServiceImpl implements CategoryService {
   constructor(private readonly repository: CategoryRepository) {}

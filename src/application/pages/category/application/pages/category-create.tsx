@@ -1,13 +1,9 @@
 import { message } from 'antd'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  Category,
-  CategoryRepositoryImpl,
-  CategoryServiceImpl,
-} from '../../infrastructure'
-import { CategoryForm } from '../components/CategoryForm'
-import { CategoryBasePath } from './CategoryRouter'
+import { Category, CategoryRepositoryImpl, CategoryServiceImpl } from '../../infrastructure'
+import { CategoryForm } from '../components/category-form'
+import { CategoryBasePath } from './category-router'
 
 const repository = new CategoryRepositoryImpl()
 const categoryService = new CategoryServiceImpl(repository)

@@ -1,2 +1,2 @@
-export * from './CategoryRepository'
-export * from './CategoryRepositoryImpl'
+export * from './category-repository'
+export * from './category-repository-impl'

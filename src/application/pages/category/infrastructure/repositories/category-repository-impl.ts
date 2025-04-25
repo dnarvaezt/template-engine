@@ -1,5 +1,5 @@
-import { Category } from '../models/Category'
-import { CategoryRepository } from './CategoryRepository'
+import { Category } from '../models/category'
+import { CategoryRepository } from './category-repository'
 
 export class CategoryRepositoryImpl implements CategoryRepository {
   private readonly STORAGE_KEY = 'categories'

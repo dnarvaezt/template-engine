@@ -1,5 +1,5 @@
 import 'antd/dist/reset.css'
-import './App.scss'
+import './app.scss'
 import { ConfigProvider } from 'antd'
 import esES from 'antd/locale/es_ES'
 import { BrowserRouter } from 'react-router-dom'

@@ -1,3 +1,3 @@
-export * from './CategoryForm'
-export * from './CategoryTable'
-export * from './DeleteCategoryButton'
+export * from './category-form'
+export * from './category-table'
+export * from './delete-category-button'

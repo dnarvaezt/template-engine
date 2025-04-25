@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { CategoryCreate } from './CategoryCreate'
-import { CategoryDetail } from './CategoryDetail'
-import { CategoryEdit } from './CategoryEdit'
-import { CategoryList } from './CategoryList'
+import { CategoryCreate } from './category-create'
+import { CategoryDetail } from './category-detail'
+import { CategoryEdit } from './category-edit'
+import { CategoryList } from './category-list'
 
 export const CategoryBasePath = '/categories'
 

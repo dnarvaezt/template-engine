@@ -43,25 +43,7 @@ export default [
       // Reglas de TypeScript
       '@typescript-eslint/explicit-module-boundary-types': 'off',
 
-      // Reglas de importación
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
-          'newlines-between': 'always',
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
-        },
-      ],
+
 
       // Reglas de React Hooks
       'react-hooks/rules-of-hooks': 'error',

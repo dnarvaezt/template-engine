@@ -1,2 +1,2 @@
-export * from './CategoryService'
-export * from './CategoryServiceImpl'
+export * from './category-service'
+export * from './category-service-impl'

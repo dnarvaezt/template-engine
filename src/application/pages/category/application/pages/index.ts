@@ -1,3 +1,3 @@
-export * from './CategoryDetail'
-export * from './CategoryList'
-export * from './CategoryRouter'
+export * from './category-detail'
+export * from './category-list'
+export * from './category-router'

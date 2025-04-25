@@ -1,5 +1,5 @@
-import { BaseEntity } from '../models/BaseEntity'
-import { BaseRepository } from '../repositories/BaseRepository'
+import { BaseEntity } from '../models/base-entity'
+import { BaseRepository } from '../repositories/base-repository'
 
 export abstract class BaseService<T extends BaseEntity> {
   constructor(protected repository: BaseRepository<T>) {}
