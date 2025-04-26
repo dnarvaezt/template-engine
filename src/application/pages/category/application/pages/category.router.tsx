@@ -1,13 +1,12 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { CategoryCreate } from './category.create'
-import { CategoryDetail } from './category.detail'
-import { CategoryEdit } from './category.edit'
-import { CategoryList } from './category.list'
+import { CategoryDetail } from './detail/category.detail'
+import { CategoryCreate } from './form/category.create'
+import { CategoryEdit } from './form/category.edit'
+import { CategoryList } from './home/category.list'
 
 export const CategoryBasePath = '/categories'
 
-export const CategoryRoutes: React.FC = () => {
+export const CategoryRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<CategoryList />} />

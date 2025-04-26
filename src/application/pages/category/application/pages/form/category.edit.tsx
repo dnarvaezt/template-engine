@@ -1,9 +1,9 @@
 import { message } from 'antd'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { categoryService } from '../../infrastructure'
-import { CategoryForm } from '../components/category.form'
-import { CategoryBasePath } from './category.router'
+import { categoryService } from '../../../infrastructure'
+import { CategoryBasePath } from '../category.router'
+import { CategoryForm } from './category.form'
 
 interface CategoryFormValues {
   name: string
