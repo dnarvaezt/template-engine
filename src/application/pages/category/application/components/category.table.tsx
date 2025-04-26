@@ -1,7 +1,7 @@
 import { Button, Space, Table } from 'antd'
 import React from 'react'
 import { Category } from '../../infrastructure'
-import { DeleteCategoryButton } from './delete-category-button'
+import { DeleteCategoryButton } from './category.delete-alert'
 
 interface CategoryTableProps {
   categories: Category[]

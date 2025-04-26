@@ -1,3 +1,3 @@
-export * from './category-form'
-export * from './category-table'
-export * from './delete-category-button'
+export * from './category.delete-alert'
+export * from './category.form'
+export * from './category.table'
