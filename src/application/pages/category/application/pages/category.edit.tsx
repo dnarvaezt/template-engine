@@ -1,5 +1,5 @@
 import { message } from 'antd'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { categoryService } from '../../infrastructure'
 import { CategoryForm } from '../components/category.form'
@@ -9,7 +9,7 @@ interface CategoryFormValues {
   name: string
 }
 
-export const CategoryEdit: React.FC = () => {
+export const CategoryEdit = () => {
   const [initialValues, setInitialValues] = useState<
     CategoryFormValues | undefined
   >()

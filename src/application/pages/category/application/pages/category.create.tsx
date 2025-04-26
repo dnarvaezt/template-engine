@@ -1,5 +1,5 @@
 import { message } from 'antd'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Category, categoryService } from '../../infrastructure'
 import { CategoryForm } from '../components/category.form'
@@ -9,7 +9,7 @@ interface CategoryFormValues {
   name: string
 }
 
-export const CategoryCreate: React.FC = () => {
+export const CategoryCreate = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
 

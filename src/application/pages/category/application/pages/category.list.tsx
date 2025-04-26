@@ -1,11 +1,11 @@
 import { Button, message } from 'antd'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Category, categoryService } from '../../infrastructure'
 import { CategoryTable } from '../components/category.table'
 import { CategoryBasePath } from './category.router'
 
-export const CategoryList: React.FC = () => {
+export const CategoryList = () => {
   const navigate = useNavigate()
   const [categories, setCategories] = useState<Category[]>([])
 

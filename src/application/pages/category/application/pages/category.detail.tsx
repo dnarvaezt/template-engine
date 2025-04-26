@@ -1,11 +1,11 @@
 import { Button, message, Space } from 'antd'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Category, categoryService } from '../../infrastructure'
 import { DeleteCategoryButton } from '../components/category.delete-alert'
 import { CategoryBasePath } from './category.router'
 
-export const CategoryDetail: React.FC = () => {
+export const CategoryDetail = () => {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const [category, setCategory] = useState<Category | null>(null)
