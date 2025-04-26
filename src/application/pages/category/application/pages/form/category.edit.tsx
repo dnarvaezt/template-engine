@@ -2,7 +2,7 @@ import { message } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { CategoryModel, categoryService } from '../../../infrastructure'
 import { useCategoryDetail } from '../../hooks'
-import { CategoryBasePath } from '../category.router'
+import { CategoryRouteMap } from '../category.routes'
 import { CategoryForm } from './category.form'
 
 export const CategoryEdit = () => {
@@ -24,10 +24,10 @@ export const CategoryEdit = () => {
         const updatedCategory = category.updateName(values.name)
         await categoryService.update(updatedCategory)
         message.success('Categoría actualizada exitosamente')
-        navigate(CategoryBasePath)
+        navigate(CategoryRouteMap.BasePath)
       } else {
         message.error('Categoría no encontrada')
-        navigate(CategoryBasePath)
+        navigate(CategoryRouteMap.BasePath)
       }
     } catch (error) {
       console.error('Error al actualizar categoría:', error)

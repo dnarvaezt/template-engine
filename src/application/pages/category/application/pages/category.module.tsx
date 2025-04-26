@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { CategoryContext, CategoryContextType } from './category.context'
-import { CategoryRoutes } from './category.router'
+import { CategoryRoutes } from './category.routes'
 
 export const CategoryModule = () => {
   const value = useMemo((): CategoryContextType => ({}), [])

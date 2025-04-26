@@ -2,7 +2,7 @@ import { Button, message } from 'antd'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CategoryModel, categoryService } from '../../../infrastructure'
-import { CategoryBasePath } from '../category.router'
+import { CategoryRouteMap } from '../category.routes'
 import { CategoryTable } from './category.table'
 
 export const CategoryList = () => {
@@ -23,11 +23,11 @@ export const CategoryList = () => {
   }, [])
 
   const handleView = (category: CategoryModel) => {
-    navigate(`${CategoryBasePath}/${category.id}`)
+    navigate(`${CategoryRouteMap.BasePath}/${category.id}`)
   }
 
   const handleEdit = (category: CategoryModel) => {
-    navigate(`${CategoryBasePath}/${category.id}/edit`)
+    navigate(`${CategoryRouteMap.BasePath}/${category.id}/edit`)
   }
 
   return (
@@ -35,7 +35,7 @@ export const CategoryList = () => {
       <div style={{ marginBottom: 16 }}>
         <Button
           type="primary"
-          onClick={() => navigate(`${CategoryBasePath}/new`)}
+          onClick={() => navigate(`${CategoryRouteMap.BasePath}/new`)}
         >
           Nueva Categoría
         </Button>

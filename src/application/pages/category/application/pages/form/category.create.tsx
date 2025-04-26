@@ -2,7 +2,7 @@ import { message } from 'antd'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CategoryModel, categoryService } from '../../../infrastructure'
-import { CategoryBasePath } from '../category.router'
+import { CategoryRouteMap } from '../category.routes'
 import { CategoryForm } from './category.form'
 
 export const CategoryCreate = () => {
@@ -19,7 +19,7 @@ export const CategoryCreate = () => {
       const newCategory = new CategoryModel({ name: values.name })
       await categoryService.create(newCategory)
       message.success('Categoría creada exitosamente')
-      navigate(CategoryBasePath)
+      navigate(CategoryRouteMap.BasePath)
     } catch (error) {
       console.error('Error al crear categoría:', error)
       message.error(
