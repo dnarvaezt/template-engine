@@ -1,6 +1,6 @@
 import { Button, Space, Table } from 'antd'
-import { Category } from '../../infrastructure'
-import { DeleteCategoryButton } from './category.delete-alert'
+import { Category } from '../../../infrastructure'
+import { DeleteCategoryButton } from '../../components'
 
 interface CategoryTableProps {
   categories: Category[]
