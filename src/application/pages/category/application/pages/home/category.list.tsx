@@ -1,13 +1,13 @@
 import { Button, message } from 'antd'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Category, categoryService } from '../../../infrastructure'
+import { CategoryModel, categoryService } from '../../../infrastructure'
 import { CategoryBasePath } from '../category.router'
 import { CategoryTable } from './category.table'
 
 export const CategoryList = () => {
   const navigate = useNavigate()
-  const [categories, setCategories] = useState<Category[]>([])
+  const [categories, setCategories] = useState<CategoryModel[]>([])
 
   const loadCategories = async () => {
     try {
@@ -22,11 +22,11 @@ export const CategoryList = () => {
     loadCategories()
   }, [])
 
-  const handleView = (category: Category) => {
+  const handleView = (category: CategoryModel) => {
     navigate(`${CategoryBasePath}/${category.id}`)
   }
 
-  const handleEdit = (category: Category) => {
+  const handleEdit = (category: CategoryModel) => {
     navigate(`${CategoryBasePath}/${category.id}/edit`)
   }
 

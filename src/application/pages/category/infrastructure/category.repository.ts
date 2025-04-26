@@ -1,16 +1,16 @@
-import { Category } from './category.model'
+import { CategoryModel } from './category.model'
 
 export abstract class CategoryRepository {
-  abstract search(): Promise<Category[]>
-  abstract findById(id: string): Promise<Category | null>
-  abstract create(category: Category): Promise<Category>
-  abstract update(category: Category): Promise<Category>
+  abstract search(): Promise<CategoryModel[]>
+  abstract findById(id: string): Promise<CategoryModel | null>
+  abstract create(category: CategoryModel): Promise<CategoryModel>
+  abstract update(category: CategoryModel): Promise<CategoryModel>
   abstract delete(id: string): Promise<void>
 }
 
 export class CategoryWebRepository implements CategoryRepository {
   private readonly STORAGE_KEY = 'categories'
-  private categories: Category[] = []
+  private categories: CategoryModel[] = []
   private nextId = 1
 
   constructor() {
@@ -21,7 +21,7 @@ export class CategoryWebRepository implements CategoryRepository {
     const stored = localStorage.getItem(this.STORAGE_KEY)
     if (stored) {
       const parsed = JSON.parse(stored)
-      this.categories = parsed.categories.map((c: any) => new Category(c))
+      this.categories = parsed.categories.map((c: any) => new CategoryModel(c))
       this.nextId = parsed.nextId
     }
   }
@@ -36,17 +36,17 @@ export class CategoryWebRepository implements CategoryRepository {
     )
   }
 
-  async search(): Promise<Category[]> {
+  async search(): Promise<CategoryModel[]> {
     return [...this.categories]
   }
 
-  async findById(id: string): Promise<Category | null> {
+  async findById(id: string): Promise<CategoryModel | null> {
     const category = this.categories.find((category) => category.id === id)
-    return category ? new Category(category) : null
+    return category ? new CategoryModel(category) : null
   }
 
-  async create(category: Category): Promise<Category> {
-    const newCategory = new Category({
+  async create(category: CategoryModel): Promise<CategoryModel> {
+    const newCategory = new CategoryModel({
       ...category,
       id: this.nextId.toString(),
     })
@@ -56,13 +56,13 @@ export class CategoryWebRepository implements CategoryRepository {
     return newCategory
   }
 
-  async update(category: Category): Promise<Category> {
+  async update(category: CategoryModel): Promise<CategoryModel> {
     const index = this.categories.findIndex((c) => c.id === category.id)
     if (index === -1) {
       throw new Error(`Categoría con ID ${category.id} no encontrada`)
     }
 
-    const updatedCategory = new Category({
+    const updatedCategory = new CategoryModel({
       ...category,
     })
 

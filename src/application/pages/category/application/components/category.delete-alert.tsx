@@ -1,9 +1,9 @@
 import { Button, message, Modal } from 'antd'
 import { useState } from 'react'
-import { Category, categoryService } from '../../infrastructure'
+import { CategoryModel, categoryService } from '../../infrastructure'
 
 interface DeleteCategoryButtonProps {
-  category: Category
+  category: CategoryModel
   onSuccess?: () => void
 }
 

@@ -1,14 +1,11 @@
 import { Button, Card, Form, Input, Space, Typography } from 'antd'
 import { useEffect } from 'react'
-
-interface CategoryFormValues {
-  name: string
-}
+import { CategoryModel } from '../../../infrastructure'
 
 interface CategoryFormProps {
   onCancel: () => void
-  onFinish: (values: CategoryFormValues) => void
-  initialValues?: CategoryFormValues
+  onFinish: (values: CategoryModel) => void
+  initialValues?: CategoryModel
   title: string
   loading?: boolean
 }

@@ -1,56 +1,20 @@
 import { message } from 'antd'
-import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { categoryService } from '../../../infrastructure'
+import { useNavigate } from 'react-router-dom'
+import { CategoryModel, categoryService } from '../../../infrastructure'
+import { useCategoryDetail } from '../../hooks'
 import { CategoryBasePath } from '../category.router'
 import { CategoryForm } from './category.form'
 
-interface CategoryFormValues {
-  name: string
-}
-
 export const CategoryEdit = () => {
-  const [initialValues, setInitialValues] = useState<
-    CategoryFormValues | undefined
-  >()
-  const [loading, setLoading] = useState(false)
-  const { id } = useParams<{ id: string }>()
+  const { id, category, loading, setLoading } = useCategoryDetail()
+
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const fetchCategory = async () => {
-      if (!id) {
-        message.error('ID de categoría no válido')
-        navigate(CategoryBasePath)
-        return
-      }
-
-      try {
-        setLoading(true)
-        const category = await categoryService.findById(id)
-        if (category) {
-          setInitialValues({ name: category.name })
-        } else {
-          message.error('Categoría no encontrada')
-          navigate(CategoryBasePath)
-        }
-      } catch (error) {
-        console.error('Error al cargar categoría:', error)
-        message.error('Error al cargar la categoría')
-        navigate(CategoryBasePath)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchCategory()
-  }, [id, navigate])
 
   const handleCancel = () => {
     navigate(-1)
   }
 
-  const handleFinish = async (values: CategoryFormValues) => {
+  const handleFinish = async (values: CategoryModel) => {
     if (!id) return
 
     try {
@@ -75,10 +39,12 @@ export const CategoryEdit = () => {
     }
   }
 
+  if (!category) return null
+
   return (
     <CategoryForm
       title="Editar Categoría"
-      initialValues={initialValues}
+      initialValues={category}
       onCancel={handleCancel}
       onFinish={handleFinish}
       loading={loading}

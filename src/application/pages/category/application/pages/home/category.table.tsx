@@ -1,12 +1,12 @@
 import { Button, Space, Table } from 'antd'
-import { Category } from '../../../infrastructure'
+import { CategoryModel } from '../../../infrastructure'
 import { DeleteCategoryButton } from '../../components'
 
 interface CategoryTableProps {
-  categories: Category[]
-  onView: (category: Category) => void
-  onEdit: (category: Category) => void
-  onDelete: (category: Category) => void
+  categories: CategoryModel[]
+  onView: (category: CategoryModel) => void
+  onEdit: (category: CategoryModel) => void
+  onDelete: (category: CategoryModel) => void
   onSuccess?: () => void
 }
 
@@ -26,7 +26,7 @@ export const CategoryTable = ({
     {
       title: 'Acciones',
       key: 'actions',
-      render: (_: any, record: Category) => (
+      render: (_: any, record: CategoryModel) => (
         <Space>
           <Button type="link" onClick={() => onView(record)}>
             Ver

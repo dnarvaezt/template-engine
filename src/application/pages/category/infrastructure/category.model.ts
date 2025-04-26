@@ -1,9 +1,9 @@
 import { BaseEntity } from 'src/infrastructure'
 
-export class Category extends BaseEntity {
+export class CategoryModel extends BaseEntity {
   public name!: string
 
-  constructor(init: Partial<Category> = {}) {
+  constructor(init: Partial<CategoryModel> = {}) {
     super(init)
     Object.assign(this, init)
     this.validate()
@@ -21,8 +21,8 @@ export class Category extends BaseEntity {
     }
   }
 
-  public updateName(name: string): Category {
-    const updated = new Category({
+  public updateName(name: string): CategoryModel {
+    const updated = new CategoryModel({
       ...this,
       name,
       updatedAt: new Date(),

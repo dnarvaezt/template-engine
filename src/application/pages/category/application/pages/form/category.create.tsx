@@ -1,13 +1,9 @@
 import { message } from 'antd'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Category, categoryService } from '../../../infrastructure'
+import { CategoryModel, categoryService } from '../../../infrastructure'
 import { CategoryBasePath } from '../category.router'
 import { CategoryForm } from './category.form'
-
-interface CategoryFormValues {
-  name: string
-}
 
 export const CategoryCreate = () => {
   const navigate = useNavigate()
@@ -17,10 +13,10 @@ export const CategoryCreate = () => {
     navigate(-1)
   }
 
-  const handleFinish = async (values: CategoryFormValues) => {
+  const handleFinish = async (values: CategoryModel) => {
     try {
       setLoading(true)
-      const newCategory = new Category({ name: values.name })
+      const newCategory = new CategoryModel({ name: values.name })
       await categoryService.create(newCategory)
       message.success('Categoría creada exitosamente')
       navigate(CategoryBasePath)

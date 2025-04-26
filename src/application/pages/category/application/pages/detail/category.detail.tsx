@@ -1,35 +1,12 @@
-import { Button, message, Space } from 'antd'
-import { useCallback, useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { Category, categoryService } from '../../../infrastructure'
+import { Button, Space } from 'antd'
+import { useNavigate } from 'react-router-dom'
 import { DeleteCategoryButton } from '../../components/category.delete-alert'
+import { useCategoryDetail } from '../../hooks'
 import { CategoryBasePath } from '../category.router'
 
 export const CategoryDetail = () => {
-  const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const [category, setCategory] = useState<Category | null>(null)
-  const [loading, setLoading] = useState(false)
-
-  const loadCategory = useCallback(async () => {
-    try {
-      setLoading(true)
-      if (id) {
-        const data = await categoryService.findById(id)
-        setCategory(data)
-      }
-    } catch (error) {
-      message.error('Error al cargar la categoría')
-    } finally {
-      setLoading(false)
-    }
-  }, [id])
-
-  useEffect(() => {
-    if (id) {
-      loadCategory()
-    }
-  }, [id, loadCategory])
+  const { id, category, loading } = useCategoryDetail()
 
   const handleEdit = () => {
     if (category) {
