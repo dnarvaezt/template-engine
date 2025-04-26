@@ -15,7 +15,7 @@ export const CategoryDetail = () => {
     try {
       setLoading(true)
       if (id) {
-        const data = await categoryService.getCategoryById(id)
+        const data = await categoryService.findById(id)
         setCategory(data)
       }
     } catch (error) {

@@ -4,23 +4,23 @@ import { CategoryRepository } from './category.repository'
 export class CategoryService {
   constructor(private readonly repository: CategoryRepository) {}
 
-  async getAllCategories(): Promise<Category[]> {
-    return this.repository.findAll()
+  async search(): Promise<Category[]> {
+    return this.repository.search()
   }
 
-  async getCategoryById(id: string): Promise<Category | null> {
+  async findById(id: string): Promise<Category | null> {
     return this.repository.findById(id)
   }
 
-  async createCategory(category: Category): Promise<Category> {
+  async create(category: Category): Promise<Category> {
     return this.repository.create(category)
   }
 
-  async updateCategory(category: Category): Promise<Category> {
+  async update(category: Category): Promise<Category> {
     return this.repository.update(category)
   }
 
-  async deleteCategory(id: string): Promise<void> {
+  async delete(id: string): Promise<void> {
     return this.repository.delete(id)
   }
 }

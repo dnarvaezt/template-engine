@@ -21,7 +21,7 @@ export const DeleteCategoryButton = ({
   const handleDelete = async () => {
     setIsLoading(true)
     try {
-      await categoryService.deleteCategory(category.id)
+      await categoryService.delete(category.id)
       message.success('Categoría eliminada exitosamente')
       setIsModalVisible(false)
       onSuccess?.()

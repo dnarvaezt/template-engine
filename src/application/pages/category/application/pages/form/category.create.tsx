@@ -21,7 +21,7 @@ export const CategoryCreate = () => {
     try {
       setLoading(true)
       const newCategory = new Category({ name: values.name })
-      await categoryService.createCategory(newCategory)
+      await categoryService.create(newCategory)
       message.success('Categoría creada exitosamente')
       navigate(CategoryBasePath)
     } catch (error) {

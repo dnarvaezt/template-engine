@@ -27,7 +27,7 @@ export const CategoryEdit = () => {
 
       try {
         setLoading(true)
-        const category = await categoryService.getCategoryById(id)
+        const category = await categoryService.findById(id)
         if (category) {
           setInitialValues({ name: category.name })
         } else {
@@ -55,10 +55,10 @@ export const CategoryEdit = () => {
 
     try {
       setLoading(true)
-      const category = await categoryService.getCategoryById(id)
+      const category = await categoryService.findById(id)
       if (category) {
         const updatedCategory = category.updateName(values.name)
-        await categoryService.updateCategory(updatedCategory)
+        await categoryService.update(updatedCategory)
         message.success('Categoría actualizada exitosamente')
         navigate(CategoryBasePath)
       } else {

@@ -1,11 +1,11 @@
 import { Category } from './category.model'
 
-export interface CategoryRepository {
-  findAll(): Promise<Category[]>
-  findById(id: string): Promise<Category | null>
-  create(category: Category): Promise<Category>
-  update(category: Category): Promise<Category>
-  delete(id: string): Promise<void>
+export abstract class CategoryRepository {
+  abstract search(): Promise<Category[]>
+  abstract findById(id: string): Promise<Category | null>
+  abstract create(category: Category): Promise<Category>
+  abstract update(category: Category): Promise<Category>
+  abstract delete(id: string): Promise<void>
 }
 
 export class CategoryWebRepository implements CategoryRepository {
@@ -36,7 +36,7 @@ export class CategoryWebRepository implements CategoryRepository {
     )
   }
 
-  async findAll(): Promise<Category[]> {
+  async search(): Promise<Category[]> {
     return [...this.categories]
   }
 

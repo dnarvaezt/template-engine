@@ -11,7 +11,7 @@ export const CategoryList = () => {
 
   const loadCategories = async () => {
     try {
-      const data = await categoryService.getAllCategories()
+      const data = await categoryService.search()
       setCategories(data)
     } catch (error) {
       message.error('Error al cargar las categorías')
