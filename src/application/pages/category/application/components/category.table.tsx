@@ -1,5 +1,4 @@
 import { Button, Space, Table } from 'antd'
-import React from 'react'
 import { Category } from '../../infrastructure'
 import { DeleteCategoryButton } from './category.delete-alert'
 
@@ -11,13 +10,13 @@ interface CategoryTableProps {
   onSuccess?: () => void
 }
 
-export const CategoryTable: React.FC<CategoryTableProps> = ({
+export const CategoryTable = ({
   categories,
   onView,
   onEdit,
   onDelete,
   onSuccess,
-}) => {
+}: CategoryTableProps) => {
   const columns = [
     {
       title: 'Nombre',

@@ -1,5 +1,5 @@
 import { Button, message, Modal } from 'antd'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Category, categoryService } from '../../infrastructure'
 
 interface DeleteCategoryButtonProps {
@@ -7,10 +7,10 @@ interface DeleteCategoryButtonProps {
   onSuccess?: () => void
 }
 
-export const DeleteCategoryButton: React.FC<DeleteCategoryButtonProps> = ({
+export const DeleteCategoryButton = ({
   category,
   onSuccess,
-}) => {
+}: DeleteCategoryButtonProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 

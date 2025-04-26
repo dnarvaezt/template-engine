@@ -1,5 +1,5 @@
 import { Button, Card, Form, Input, Space, Typography } from 'antd'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 interface CategoryFormValues {
   name: string
@@ -13,13 +13,13 @@ interface CategoryFormProps {
   loading?: boolean
 }
 
-export const CategoryForm: React.FC<CategoryFormProps> = ({
+export const CategoryForm = ({
   onCancel,
   onFinish,
   initialValues,
   title,
   loading = false,
-}) => {
+}: CategoryFormProps) => {
   const [form] = Form.useForm()
 
   useEffect(() => {
