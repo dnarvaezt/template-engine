@@ -1,8 +1,7 @@
-import { Category } from '../models/category'
-import { CategoryRepository } from '../repositories/category-repository'
-import { CategoryService } from './category-service'
+import { Category } from './category.model'
+import { CategoryRepository } from './category.repository'
 
-export class CategoryServiceImpl implements CategoryService {
+export class CategoryService {
   constructor(private readonly repository: CategoryRepository) {}
 
   async getAllCategories(): Promise<Category[]> {

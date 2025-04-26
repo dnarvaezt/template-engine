@@ -1,15 +1,9 @@
 import { message } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import {
-  CategoryRepositoryImpl,
-  CategoryServiceImpl,
-} from '../../infrastructure'
+import { categoryService } from '../../infrastructure'
 import { CategoryForm } from '../components/category.form'
 import { CategoryBasePath } from './category.router'
-
-const repository = new CategoryRepositoryImpl()
-const categoryService = new CategoryServiceImpl(repository)
 
 interface CategoryFormValues {
   name: string

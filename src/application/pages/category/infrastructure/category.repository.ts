@@ -1,7 +1,14 @@
-import { Category } from '../models/category'
-import { CategoryRepository } from './category-repository'
+import { Category } from './category.model'
 
-export class CategoryRepositoryImpl implements CategoryRepository {
+export interface CategoryRepository {
+  findAll(): Promise<Category[]>
+  findById(id: string): Promise<Category | null>
+  create(category: Category): Promise<Category>
+  update(category: Category): Promise<Category>
+  delete(id: string): Promise<void>
+}
+
+export class CategoryWebRepository implements CategoryRepository {
   private readonly STORAGE_KEY = 'categories'
   private categories: Category[] = []
   private nextId = 1

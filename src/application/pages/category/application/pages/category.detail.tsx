@@ -1,11 +1,7 @@
 import { Button, message, Space } from 'antd'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import {
-  Category,
-  CategoryRepositoryImpl,
-  CategoryServiceImpl,
-} from '../../infrastructure'
+import { Category, categoryService } from '../../infrastructure'
 import { DeleteCategoryButton } from '../components/category.delete-alert'
 import { CategoryBasePath } from './category.router'
 
@@ -14,12 +10,6 @@ export const CategoryDetail: React.FC = () => {
   const navigate = useNavigate()
   const [category, setCategory] = useState<Category | null>(null)
   const [loading, setLoading] = useState(false)
-
-  const repository = useMemo(() => new CategoryRepositoryImpl(), [])
-  const categoryService = useMemo(
-    () => new CategoryServiceImpl(repository),
-    [repository]
-  )
 
   const loadCategory = useCallback(async () => {
     try {
@@ -33,7 +23,7 @@ export const CategoryDetail: React.FC = () => {
     } finally {
       setLoading(false)
     }
-  }, [id, categoryService])
+  }, [id])
 
   useEffect(() => {
     if (id) {

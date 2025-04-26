@@ -1,13 +1,6 @@
 import { Button, message, Modal } from 'antd'
 import React, { useState } from 'react'
-import {
-  Category,
-  CategoryRepositoryImpl,
-  CategoryServiceImpl,
-} from '../../infrastructure'
-
-const repository = new CategoryRepositoryImpl()
-const categoryService = new CategoryServiceImpl(repository)
+import { Category, categoryService } from '../../infrastructure'
 
 interface DeleteCategoryButtonProps {
   category: Category
