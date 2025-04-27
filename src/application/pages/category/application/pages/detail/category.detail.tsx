@@ -2,14 +2,15 @@ import { Button, Space } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { DeleteCategoryButton } from '../../components/category.delete-alert'
 import { useCategoryDetail } from '../../hooks'
-import { CategoryRouteMap } from '../category.routes'
+import { CategoryRouteMap, getCategoryRouteUrl } from '../category.routes'
 
 export const CategoryDetail = () => {
   const navigate = useNavigate()
   const { id, category, loading } = useCategoryDetail()
 
   const handleEdit = () => {
-    if (category) navigate(`${CategoryRouteMap.BasePath}/${category.id}/edit`)
+    if (category)
+      navigate(getCategoryRouteUrl(CategoryRouteMap.Edit, { id: category.id }))
   }
 
   const handleDeleteSuccess = () => {

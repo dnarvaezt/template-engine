@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CategoryModel, categoryService } from '../../../infrastructure'
 import { DeleteCategoryButton } from '../../components'
-import { CategoryRouteMap } from '../category.routes'
+import { CategoryRouteMap, getCategoryRouteUrl } from '../category.routes'
 import { CategoryTable } from './category.table'
 
 export const CategoryHome = () => {
@@ -23,21 +23,15 @@ export const CategoryHome = () => {
     loadCategories()
   }, [])
 
-  const handleView = (category: CategoryModel) => {
-    navigate(`${CategoryRouteMap.BasePath}/${category.id}`)
-  }
-
-  const handleEdit = (category: CategoryModel) => {
-    navigate(`${CategoryRouteMap.BasePath}/${category.id}/edit`)
-  }
-
   const renderActions = (category: CategoryModel) => {
     return (
       <Space>
         <Button
           type="link"
           onClick={() =>
-            navigate(`${CategoryRouteMap.BasePath}/${category.id}`)
+            navigate(
+              getCategoryRouteUrl(CategoryRouteMap.Detail, { id: category.id })
+            )
           }
         >
           Ver
@@ -45,7 +39,9 @@ export const CategoryHome = () => {
         <Button
           type="link"
           onClick={() =>
-            navigate(`${CategoryRouteMap.BasePath}/${category.id}/edit`)
+            navigate(
+              getCategoryRouteUrl(CategoryRouteMap.Edit, { id: category.id })
+            )
           }
         >
           Editar
@@ -60,7 +56,7 @@ export const CategoryHome = () => {
       <div style={{ marginBottom: 16 }}>
         <Button
           type="primary"
-          onClick={() => navigate(`${CategoryRouteMap.BasePath}/new`)}
+          onClick={() => navigate(getCategoryRouteUrl(CategoryRouteMap.New))}
         >
           Nueva Categoría
         </Button>

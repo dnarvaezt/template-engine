@@ -4,13 +4,13 @@ import { CategoryCreate } from './form/category.create'
 import { CategoryEdit } from './form/category.edit'
 import { CategoryHome } from './home/category.home'
 
-export const CategoryRouteMap = {
-  BasePath: '/categories',
-  Home: '/',
-  New: '/new',
-  Detail: '/:id',
-  Edit: '/:id/edit',
-} as const
+export enum CategoryRouteMap {
+  BasePath = '/categories',
+  Home = '/',
+  New = '/new',
+  Detail = '/:id',
+  Edit = '/:id/edit',
+}
 
 export const CategoryRoutes = () => {
   return (
@@ -21,4 +21,20 @@ export const CategoryRoutes = () => {
       <Route path={CategoryRouteMap.Edit} element={<CategoryEdit />} />
     </Routes>
   )
+}
+
+export const getCategoryRouteUrl = (
+  route: CategoryRouteMap,
+  args?: Record<string, string | number | boolean>
+): string => {
+  if (route === CategoryRouteMap.BasePath) return route
+
+  let url = `${CategoryRouteMap.BasePath}${route}`
+
+  if (args)
+    Object.entries(args).forEach(([key, value]) => {
+      url = url.replace(`:${key}`, String(value))
+    })
+
+  return url
 }
