@@ -1,11 +1,12 @@
-import { Button, message } from 'antd'
+import { Button, message, Space } from 'antd'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CategoryModel, categoryService } from '../../../infrastructure'
+import { DeleteCategoryButton } from '../../components'
 import { CategoryRouteMap } from '../category.routes'
 import { CategoryTable } from './category.table'
 
-export const CategoryList = () => {
+export const CategoryHome = () => {
   const navigate = useNavigate()
   const [categories, setCategories] = useState<CategoryModel[]>([])
 
@@ -30,6 +31,30 @@ export const CategoryList = () => {
     navigate(`${CategoryRouteMap.BasePath}/${category.id}/edit`)
   }
 
+  const renderActions = (category: CategoryModel) => {
+    return (
+      <Space>
+        <Button
+          type="link"
+          onClick={() =>
+            navigate(`${CategoryRouteMap.BasePath}/${category.id}`)
+          }
+        >
+          Ver
+        </Button>
+        <Button
+          type="link"
+          onClick={() =>
+            navigate(`${CategoryRouteMap.BasePath}/${category.id}/edit`)
+          }
+        >
+          Editar
+        </Button>
+        <DeleteCategoryButton category={category} onSuccess={loadCategories} />
+      </Space>
+    )
+  }
+
   return (
     <div>
       <div style={{ marginBottom: 16 }}>
@@ -41,13 +66,7 @@ export const CategoryList = () => {
         </Button>
       </div>
 
-      <CategoryTable
-        categories={categories}
-        onView={handleView}
-        onEdit={handleEdit}
-        onDelete={() => {}} // Esta prop ya no es necesaria pero la mantenemos por compatibilidad
-        onSuccess={loadCategories}
-      />
+      <CategoryTable categories={categories} renderActions={renderActions} />
     </div>
   )
 }
