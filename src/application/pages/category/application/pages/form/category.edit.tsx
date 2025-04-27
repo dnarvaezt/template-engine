@@ -44,7 +44,7 @@ export const CategoryEdit = () => {
   return (
     <CategoryForm
       title="Editar Categoría"
-      initialValues={category}
+      category={category}
       onCancel={handleCancel}
       onFinish={handleFinish}
       loading={loading}

@@ -5,7 +5,7 @@ import { CategoryModel } from '../../../infrastructure'
 interface CategoryFormProps {
   onCancel: () => void
   onFinish: (values: CategoryModel) => void
-  initialValues?: CategoryModel
+  category?: CategoryModel
   title: string
   loading?: boolean
 }
@@ -13,17 +13,17 @@ interface CategoryFormProps {
 export const CategoryForm = ({
   onCancel,
   onFinish,
-  initialValues,
+  category,
   title,
   loading = false,
 }: CategoryFormProps) => {
   const [form] = Form.useForm()
 
   useEffect(() => {
-    if (initialValues) {
-      form.setFieldsValue(initialValues)
+    if (category) {
+      form.setFieldsValue(category)
     }
-  }, [initialValues, form])
+  }, [category, form])
 
   const handleSubmit = async () => {
     try {
@@ -51,7 +51,7 @@ export const CategoryForm = ({
         <Form
           form={form}
           layout="vertical"
-          initialValues={initialValues}
+          initialValues={category}
           disabled={loading}
         >
           <Form.Item
