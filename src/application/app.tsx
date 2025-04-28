@@ -3,7 +3,7 @@ import 'antd/dist/reset.css'
 import esES from 'antd/locale/es_ES'
 import { BrowserRouter } from 'react-router-dom'
 import './app.scss'
-import { AppRoutes } from './routes/routes'
+import { AppRoutes } from './routes'
 
 export const App = () => {
   return (

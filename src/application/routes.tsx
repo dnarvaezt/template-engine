@@ -1,9 +1,6 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import {
-  CategoryModule,
-  CategoryRouteMap,
-} from '../pages/category/application/pages'
+import { CategoryModule, CategoryRouteMap } from './pages/category'
 
 export const AppRoutes: React.FC = () => {
   return (
