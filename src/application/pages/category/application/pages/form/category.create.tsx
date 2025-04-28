@@ -1,6 +1,6 @@
-import { message } from 'antd'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { MessageHandlerService } from 'src/infrastructure'
 import { CategoryModel, categoryService } from '../../../infrastructure'
 import { CategoryRouteMap } from '../category.routes'
 import { CategoryForm } from './category.form'
@@ -18,13 +18,13 @@ export const CategoryCreate = () => {
       setLoading(true)
       const newCategory = new CategoryModel({ name: values.name })
       await categoryService.set(newCategory)
-      message.success('Categoría creada exitosamente')
+      MessageHandlerService.success('Categoría creada exitosamente')
       navigate(CategoryRouteMap.BasePath)
     } catch (error) {
-      console.error('Error al crear categoría:', error)
-      message.error(
-        'Error al crear la categoría. Por favor, intente nuevamente.'
-      )
+      MessageHandlerService.error({
+        error,
+        defaultMessage: 'Error al crear la categoría',
+      })
     } finally {
       setLoading(false)
     }

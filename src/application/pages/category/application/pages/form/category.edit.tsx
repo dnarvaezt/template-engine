@@ -1,5 +1,5 @@
-import { message } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { MessageHandlerService } from 'src/infrastructure'
 import { CategoryModel, categoryService } from '../../../infrastructure'
 import { useCategoryDetail } from '../../hooks'
 import { CategoryRouteMap } from '../category.routes'
@@ -24,17 +24,20 @@ export const CategoryEdit = () => {
         category.name = values.name
         const updatedCategory = category
         await categoryService.update(updatedCategory)
-        message.success('Categoría actualizada exitosamente')
+        MessageHandlerService.success('Categoría actualizada exitosamente')
         navigate(CategoryRouteMap.BasePath)
       } else {
-        message.error('Categoría no encontrada')
+        MessageHandlerService.error({
+          defaultMessage: 'Categoría no encontrada',
+        })
         navigate(CategoryRouteMap.BasePath)
       }
     } catch (error) {
-      console.error('Error al actualizar categoría:', error)
-      message.error(
-        'Error al actualizar la categoría. Por favor, intente nuevamente.'
-      )
+      MessageHandlerService.error({
+        error,
+        defaultMessage:
+          'Error al actualizar la categoría. Por favor, intente nuevamente.',
+      })
     } finally {
       setLoading(false)
     }

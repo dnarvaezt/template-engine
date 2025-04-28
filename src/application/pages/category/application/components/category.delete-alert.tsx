@@ -1,5 +1,6 @@
-import { Button, message, Modal } from 'antd'
+import { Button, Modal } from 'antd'
 import { useState } from 'react'
+import { MessageHandlerService } from 'src/infrastructure'
 import { CategoryModel, categoryService } from '../../infrastructure'
 
 interface DeleteCategoryButtonProps {
@@ -22,11 +23,14 @@ export const DeleteCategoryButton = ({
     setIsLoading(true)
     try {
       await categoryService.delete(category.id)
-      message.success('Categoría eliminada exitosamente')
+      MessageHandlerService.success('Categoría eliminada exitosamente')
       setIsModalVisible(false)
       onSuccess?.()
     } catch (error) {
-      message.error('Error al eliminar la categoría')
+      MessageHandlerService.error({
+        error,
+        defaultMessage: 'Error al eliminar la categoría',
+      })
     } finally {
       setIsLoading(false)
     }

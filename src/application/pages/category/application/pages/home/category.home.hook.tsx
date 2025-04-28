@@ -1,5 +1,5 @@
-import { message } from 'antd'
 import { useEffect, useState } from 'react'
+import { MessageHandlerService } from 'src/infrastructure'
 import { CategoryModel, categoryService } from '../../../infrastructure'
 import { CategoryHomeContextValue } from './category.home.context'
 
@@ -13,7 +13,10 @@ export const useCategoryHome = (): CategoryHomeContextValue => {
       const data = await categoryService.search()
       setCategories(data)
     } catch (error) {
-      message.error('Error al cargar las categorías')
+      MessageHandlerService.error({
+        error,
+        defaultMessage: 'Error al cargar las categorías',
+      })
     } finally {
       setLoading(false)
     }

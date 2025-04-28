@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { MessageHandlerService } from 'src/infrastructure'
 import { CategoryModel, categoryService } from '../../infrastructure'
 
 export const useCategoryDetail = () => {
@@ -23,8 +24,11 @@ export const useCategoryDetail = () => {
         } else {
           setError('Category not found')
         }
-      } catch (err) {
-        setError('Error fetching category')
+      } catch (error) {
+        MessageHandlerService.error({
+          error,
+          defaultMessage: 'Error fetching category',
+        })
       } finally {
         setLoading(false)
       }
