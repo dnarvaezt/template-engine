@@ -1,12 +1,12 @@
-import { useMemo } from 'react'
-import { CategoryContext, CategoryContextType } from './category.context'
+import { CategoryContext } from './category.context'
+import { useCategoryContext } from './category.hook'
 import { CategoryRoutes } from './category.routes'
 
 export const CategoryModule = () => {
-  const value = useMemo((): CategoryContextType => ({}), [])
+  const contextValue = useCategoryContext()
 
   return (
-    <CategoryContext.Provider value={value}>
+    <CategoryContext.Provider value={contextValue}>
       <CategoryRoutes />
     </CategoryContext.Provider>
   )

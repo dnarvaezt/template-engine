@@ -1,5 +1,5 @@
 import { createContext } from 'react'
 
-export interface CategoryContextType {}
+export interface CategoryContextValue {}
 
-export const CategoryContext = createContext<CategoryContextType>({})
+export const CategoryContext = createContext<CategoryContextValue>({})
