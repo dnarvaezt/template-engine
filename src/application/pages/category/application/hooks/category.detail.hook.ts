@@ -17,7 +17,7 @@ export const useCategoryDetail = () => {
 
       try {
         setLoading(true)
-        const fetchedCategory = await categoryService.findById(id)
+        const fetchedCategory = await categoryService.get(id)
         if (fetchedCategory) {
           setCategory(fetchedCategory)
         } else {

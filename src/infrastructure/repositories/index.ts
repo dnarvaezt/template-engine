@@ -1,1 +1,2 @@
-export * from './base-repository'
+export * from './repository'
+export * from './web.repository'

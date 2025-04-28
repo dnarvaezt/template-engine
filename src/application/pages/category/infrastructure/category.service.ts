@@ -8,12 +8,12 @@ export class CategoryService {
     return this.repository.search()
   }
 
-  async findById(id: string): Promise<CategoryModel | null> {
-    return this.repository.findById(id)
+  async get(id: string): Promise<CategoryModel | null> {
+    return this.repository.get(id)
   }
 
-  async create(category: CategoryModel): Promise<CategoryModel> {
-    return this.repository.create(category)
+  async set(category: CategoryModel): Promise<CategoryModel> {
+    return this.repository.set(category)
   }
 
   async update(category: CategoryModel): Promise<CategoryModel> {

@@ -1,4 +1,4 @@
-export abstract class BaseEntity {
+export class BaseEntity {
   public id!: string
 
   constructor(init: Partial<BaseEntity> = {}) {

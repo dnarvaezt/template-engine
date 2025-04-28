@@ -19,9 +19,10 @@ export const CategoryEdit = () => {
 
     try {
       setLoading(true)
-      const category = await categoryService.findById(id)
+      const category = await categoryService.get(id)
       if (category) {
-        const updatedCategory = category.updateName(values.name)
+        category.name = values.name
+        const updatedCategory = category
         await categoryService.update(updatedCategory)
         message.success('Categoría actualizada exitosamente')
         navigate(CategoryRouteMap.BasePath)
