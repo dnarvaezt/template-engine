@@ -2,9 +2,12 @@ const templates = require('./templates.json')
 const Generator = require('yeoman-generator')
 
 module.exports = class extends Generator {
-  async prompting() {
-    this.log(`Template Generator`)
+  initializing() {
+    this.log('\n🚀 Welcome to Template Generator!')
+    this.log("Let's create something amazing together!\n")
+  }
 
+  async prompting() {
     this.answers = await this.prompt([
       {
         type: 'list',
@@ -16,11 +19,11 @@ module.exports = class extends Generator {
     ])
 
     const { template } = this.answers
-    this.log('Template selected: ', template)
     this.composeWith(require.resolve(templates[template]))
   }
 
   end() {
-    this.log('\nFinished generating!\nGo!!!')
+    this.log('\n✨ Template generated successfully!')
+    this.log('Happy coding! 🎉\n')
   }
 }
