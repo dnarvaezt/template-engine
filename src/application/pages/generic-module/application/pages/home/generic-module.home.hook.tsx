@@ -7,18 +7,18 @@ import {
 import { GenericModuleHomeContextValue } from './generic-module.home.context'
 
 export const useGenericModuleHome = (): GenericModuleHomeContextValue => {
-  const [categories, setCategories] = useState<GenericModuleModel[]>([])
+  const [items, setItems] = useState<GenericModuleModel[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
-  const loadCategories = async () => {
+  const loadItems = async () => {
     try {
       setLoading(true)
       const data = await genericModuleService.search()
-      setCategories(data)
+      setItems(data)
     } catch (error) {
       MessageHandlerService.error({
         error,
-        defaultMessage: 'Error al cargar las categorías',
+        defaultMessage: 'Error loading items',
       })
     } finally {
       setLoading(false)
@@ -26,8 +26,8 @@ export const useGenericModuleHome = (): GenericModuleHomeContextValue => {
   }
 
   useEffect(() => {
-    loadCategories()
+    loadItems()
   }, [])
 
-  return { categories, loading, loadCategories }
+  return { items, loading, loadItems }
 }

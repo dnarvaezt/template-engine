@@ -21,12 +21,12 @@ export const GenericModuleCreate = () => {
       setLoading(true)
       const newGenericModule = new GenericModuleModel({ name: values.name })
       await genericModuleService.set(newGenericModule)
-      MessageHandlerService.success('Categoría creada exitosamente')
+      MessageHandlerService.success('Item created successfully')
       navigate(GenericModuleRouteMap.BasePath)
     } catch (error) {
       MessageHandlerService.error({
         error,
-        defaultMessage: 'Error al crear la categoría',
+        defaultMessage: 'Error creating item',
       })
     } finally {
       setLoading(false)
@@ -35,7 +35,7 @@ export const GenericModuleCreate = () => {
 
   return (
     <GenericModuleForm
-      title="Crear Categoría"
+      title="Create Item"
       onCancel={handleCancel}
       onFinish={handleFinish}
       loading={loading}

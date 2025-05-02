@@ -11,16 +11,16 @@ import { GenericModuleHomeContext } from '../generic-module.home.context'
 
 export const GenericModuleTable = () => {
   const navigate = useNavigate()
-  const { categories, loadCategories } = useContext(GenericModuleHomeContext)
+  const { items, loadItems } = useContext(GenericModuleHomeContext)
 
   const columns = [
     {
-      title: 'Nombre',
+      title: 'Name',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Acciones',
+      title: 'Actions',
       key: 'actions',
       render: (_: any, record: GenericModuleModel) => renderActions(record),
     },
@@ -39,7 +39,7 @@ export const GenericModuleTable = () => {
             )
           }
         >
-          Ver
+          View
         </Button>
         <Button
           type="link"
@@ -51,11 +51,11 @@ export const GenericModuleTable = () => {
             )
           }
         >
-          Editar
+          Edit
         </Button>
         <DeleteGenericModuleButton
           genericModule={genericModule}
-          onSuccess={loadCategories}
+          onSuccess={loadItems}
         />
       </Space>
     )
@@ -63,7 +63,7 @@ export const GenericModuleTable = () => {
 
   return (
     <Table
-      dataSource={categories}
+      dataSource={items}
       columns={columns}
       rowKey="id"
       pagination={{ pageSize: 10 }}

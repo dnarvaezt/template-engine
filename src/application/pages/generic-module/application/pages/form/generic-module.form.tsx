@@ -41,10 +41,10 @@ export const GenericModuleForm = ({
           <Typography.Title level={2}>{title}</Typography.Title>
           <Space>
             <Button onClick={onCancel} disabled={loading}>
-              Cancelar
+              Cancel
             </Button>
             <Button type="primary" onClick={handleSubmit} loading={loading}>
-              Guardar
+              Save
             </Button>
           </Space>
         </Space>
@@ -56,26 +56,21 @@ export const GenericModuleForm = ({
         >
           <Form.Item
             name="name"
-            label="Nombre"
+            label="Name"
             rules={[
-              { required: true, message: 'Por favor ingrese el nombre' },
-              { min: 3, message: 'El nombre debe tener al menos 3 caracteres' },
+              { required: true, message: 'Please enter the name' },
+              { min: 3, message: 'Name must be at least 3 characters' },
               {
                 max: 50,
-                message: 'El nombre no puede exceder los 50 caracteres',
+                message: 'Name cannot exceed 50 characters',
               },
               {
-                pattern: /^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ]+$/,
-                message:
-                  'El nombre solo puede contener letras, números y espacios',
+                pattern: /^[a-zA-Z0-9\s]+$/,
+                message: 'Name can only contain letters, numbers and spaces',
               },
             ]}
           >
-            <Input
-              placeholder="Ingrese el nombre de la categoría"
-              maxLength={50}
-              showCount
-            />
+            <Input placeholder="Enter item name" maxLength={50} showCount />
           </Form.Item>
         </Form>
       </Space>

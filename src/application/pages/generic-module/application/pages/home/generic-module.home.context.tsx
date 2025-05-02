@@ -2,14 +2,14 @@ import { createContext } from 'react'
 import { GenericModuleModel } from '../../../infrastructure'
 
 export interface GenericModuleHomeContextValue {
-  categories: GenericModuleModel[]
+  items: GenericModuleModel[]
   loading: boolean
-  loadCategories: () => Promise<void>
+  loadItems: () => Promise<void>
 }
 
 export const GenericModuleHomeContext =
   createContext<GenericModuleHomeContextValue>({
-    categories: [],
+    items: [],
     loading: true,
-    loadCategories: async () => {},
+    loadItems: async () => {},
   })

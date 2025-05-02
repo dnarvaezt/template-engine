@@ -25,24 +25,24 @@ export const GenericModuleDetail = () => {
   }
 
   if (loading && !genericModule) {
-    return <div>Cargando...</div>
+    return <div>Loading...</div>
   }
 
   if (!genericModule) {
-    return <div>No se encontró la categoría</div>
+    return <div>Item not found</div>
   }
 
   return (
     <div>
-      <h1>Detalles de la Categoría {id}</h1>
+      <h1>Item Details {id}</h1>
       <div style={{ marginBottom: 16 }}>
         <p>
-          <strong>Nombre:</strong> {genericModule.name}
+          <strong>Name:</strong> {genericModule.name}
         </p>
       </div>
       <Space>
         <Button type="primary" onClick={handleEdit} disabled={loading}>
-          Editar
+          Edit
         </Button>
         <DeleteGenericModuleButton
           genericModule={genericModule}
@@ -52,7 +52,7 @@ export const GenericModuleDetail = () => {
           onClick={() => navigate(GenericModuleRouteMap.BasePath)}
           disabled={loading}
         >
-          Volver
+          Back
         </Button>
       </Space>
     </div>

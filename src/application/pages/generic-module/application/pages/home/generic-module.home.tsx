@@ -22,7 +22,7 @@ export const GenericModuleHome = () => {
               navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.New))
             }
           >
-            Nueva Categoría
+            New Item
           </Button>
         </div>
 

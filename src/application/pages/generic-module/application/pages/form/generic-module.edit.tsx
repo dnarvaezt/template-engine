@@ -27,19 +27,18 @@ export const GenericModuleEdit = () => {
         genericModule.name = values.name
         const updatedGenericModule = genericModule
         await genericModuleService.update(updatedGenericModule)
-        MessageHandlerService.success('Categoría actualizada exitosamente')
+        MessageHandlerService.success('Item updated successfully')
         navigate(GenericModuleRouteMap.BasePath)
       } else {
         MessageHandlerService.error({
-          defaultMessage: 'Categoría no encontrada',
+          defaultMessage: 'Item not found',
         })
         navigate(GenericModuleRouteMap.BasePath)
       }
     } catch (error) {
       MessageHandlerService.error({
         error,
-        defaultMessage:
-          'Error al actualizar la categoría. Por favor, intente nuevamente.',
+        defaultMessage: 'Error updating item. Please try again.',
       })
     } finally {
       setLoading(false)
@@ -50,7 +49,7 @@ export const GenericModuleEdit = () => {
 
   return (
     <GenericModuleForm
-      title="Editar Categoría"
+      title="Edit Item"
       genericModule={genericModule}
       onCancel={handleCancel}
       onFinish={handleFinish}
