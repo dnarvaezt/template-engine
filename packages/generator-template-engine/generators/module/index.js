@@ -12,7 +12,7 @@ module.exports = class extends Generator {
     const basePath = path.join(__dirname, '../../../..')
     this._configManager.base = basePath
     this._configManager.baseName = 'generic-module'
-    this._configManager.templates = path.join(
+    this._configManager.template = path.join(
       basePath,
       'src/application/pages/generic-module'
     )

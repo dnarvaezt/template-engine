@@ -2,7 +2,7 @@ class Config {
   constructor() {
     this.base = null
     this.baseName = null
-    this.templates = null
+    this.template = null
     this.destination = null
   }
 
