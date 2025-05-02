@@ -23,13 +23,13 @@ export const DeleteGenericModuleButton = ({
     setIsLoading(true)
     try {
       await genericModuleService.delete(genericModule.id)
-      MessageHandlerService.success('Categoría eliminada exitosamente')
+      MessageHandlerService.success('Item deleted successfully')
       setIsModalVisible(false)
       onSuccess?.()
     } catch (error) {
       MessageHandlerService.error({
         error,
-        defaultMessage: 'Error al eliminar la categoría',
+        defaultMessage: 'Error deleting item',
       })
     } finally {
       setIsLoading(false)
@@ -43,21 +43,18 @@ export const DeleteGenericModuleButton = ({
   return (
     <>
       <Button type="link" danger onClick={showModal}>
-        Eliminar
+        Delete
       </Button>
       <Modal
-        title="Confirmar eliminación"
+        title="Confirm deletion"
         open={isModalVisible}
         onOk={handleDelete}
         onCancel={handleCancel}
-        okText="Eliminar"
-        cancelText="Cancelar"
+        okText="Delete"
+        cancelText="Cancel"
         confirmLoading={isLoading}
       >
-        <p>
-          ¿Estás seguro de que deseas eliminar la categoría "
-          {genericModule.name}"?
-        </p>
+        <p>Are you sure you want to delete the item "{genericModule.name}"?</p>
       </Modal>
     </>
   )

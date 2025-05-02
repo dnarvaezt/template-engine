@@ -8,6 +8,6 @@ export class GenericModuleWebRepository
   implements GenericModuleRepository
 {
   constructor() {
-    super('categories')
+    super('items')
   }
 }
