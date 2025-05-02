@@ -1,6 +1,6 @@
 const Generator = require('yeoman-generator')
-const Config = require('./config')
-const FileSystemManager = require('./file-system-manager')
+const Config = require('../../utils/config')
+const FileSystemManager = require('../../utils/file-system-manager')
 const path = require('path')
 
 module.exports = class extends Generator {
