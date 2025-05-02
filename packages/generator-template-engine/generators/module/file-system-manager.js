@@ -159,7 +159,7 @@ class FileSystemManager {
    * @returns {Object} Estructura completa del directorio
    */
   getTemplateStructure() {
-    const basePath = this.configManager.getPath('templates')
+    const basePath = this.configManager.templates
     if (!this.directoryExists(basePath)) {
       return {
         error: `Base directory does not exist: ${basePath}`,
@@ -175,7 +175,7 @@ class FileSystemManager {
    * @returns {Object} Estructura del directorio de templates
    */
   getTemplatesStructure() {
-    const templatesPath = this.configManager.getPath('templates')
+    const templatesPath = this.configManager.templates
     if (!this.directoryExists(templatesPath)) {
       return {
         error: `Templates directory does not exist: ${templatesPath}`,
@@ -218,12 +218,12 @@ class FileSystemManager {
    * @param {string} moduleName - Nombre del nuevo módulo
    */
   copyTemplateFiles(moduleName) {
-    const templatePath = this.configManager.getPath('templates')
+    const templatePath = this.configManager.templates
     const destinationPath = path.join(
-      this.configManager.getPath('destination'),
+      this.configManager.destination,
       moduleName
     )
-    const baseName = this.configManager.get('baseName')
+    const baseName = this.configManager.baseName
 
     // Obtener todas las transformaciones
     const baseNameTransformations =

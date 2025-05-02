@@ -6,14 +6,6 @@ class Config {
     this.destination = null
   }
 
-  getPath(key) {
-    return this[key]
-  }
-
-  get(key) {
-    return this[key]
-  }
-
   /**
    * Convierte un string a camelCase
    *
