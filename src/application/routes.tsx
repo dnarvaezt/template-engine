@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { GenericModuleModule, GenericModuleRouteMap } from './pages'
 import { CategoryModule, CategoryRouteMap } from './pages/category'
 
 export const AppRoutes: React.FC = () => {
@@ -12,6 +13,10 @@ export const AppRoutes: React.FC = () => {
       <Route
         path={`${CategoryRouteMap.BasePath}/*`}
         element={<CategoryModule />}
+      />
+      <Route
+        path={`${GenericModuleRouteMap.BasePath}/*`}
+        element={<GenericModuleModule />}
       />
     </Routes>
   )

@@ -1,0 +1,20 @@
+{
+  "name": "generator-template-engine",
+  "version": "1.0.0",
+  "description": "Yeoman generator for creating template projects",
+  "keywords": [
+    "yeoman-generator",
+    "template",
+    "generator"
+  ],
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "generators/app/index.js",
+  "files": [
+    "generators"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^5.8.0"
+  }
+}

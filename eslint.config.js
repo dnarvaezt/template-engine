@@ -7,6 +7,9 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import globals from 'globals'
 
 export default [
+  {
+    ignores: ['packages/**/*'],
+  },
   js.configs.recommended,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
