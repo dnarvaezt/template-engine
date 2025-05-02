@@ -6,19 +6,22 @@ const path = require('path')
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts)
-    this._configManager = new Config()
 
-    // Configuración estática de rutas
     const basePath = path.join(__dirname, '../../../..')
-    this._configManager.base = basePath
-    this._configManager.baseName = 'generic-module'
-    this._configManager.template = path.join(
-      basePath,
-      'src/application/pages/generic-module'
-    )
-    this._configManager.destination = process.cwd()
 
-    // Inicializar el gestor de sistema de archivos
+    this._configManager = new Config({
+      base: basePath,
+      baseName: 'generic-module',
+      template: path.join(basePath, 'src/application/pages/generic-module'),
+      destination: process.cwd(),
+    })
+
+    try {
+      this._configManager.validate()
+    } catch (error) {
+      this.env.error(`Configuration error: ${error.message}`)
+    }
+
     this._fileSystem = new FileSystemManager(this._configManager)
   }
 
@@ -36,10 +39,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    // Imprimir la estructura del directorio base
     this._fileSystem.printTemplateStructure()
-
-    // Copiar los archivos del template al nuevo directorio
     this._fileSystem.copyTemplateFiles(this.answers.name)
   }
 }
