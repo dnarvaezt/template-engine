@@ -2,6 +2,7 @@ import { CloseOutlined, SaveOutlined } from '@ant-design/icons'
 import { Button, Card, Form, Input, Space, Typography } from 'antd'
 import { useEffect } from 'react'
 import { GenericModule } from '../../../application'
+import { useI18nGenericModule } from '../../i18n'
 
 interface GenericModuleFormProps {
   onCancel: () => void
@@ -19,6 +20,7 @@ export const GenericModuleForm = ({
   loading = false,
 }: GenericModuleFormProps) => {
   const [form] = Form.useForm()
+  const { t } = useI18nGenericModule()
 
   useEffect(() => {
     if (genericModule) {
@@ -49,21 +51,25 @@ export const GenericModuleForm = ({
         >
           <Form.Item
             name="name"
-            label="Name"
+            label={t('genericModule.form.name.label')}
             rules={[
-              { required: true, message: 'Please enter the name' },
-              { min: 3, message: 'Name must be at least 3 characters' },
               {
-                max: 50,
-                message: 'Name cannot exceed 50 characters',
+                required: true,
+                message: t('genericModule.form.name.required'),
               },
+              { min: 3, message: t('genericModule.form.name.min') },
+              { max: 50, message: t('genericModule.form.name.max') },
               {
                 pattern: /^[a-zA-Z0-9\s]+$/,
-                message: 'Name can only contain letters, numbers and spaces',
+                message: t('genericModule.form.name.pattern'),
               },
             ]}
           >
-            <Input placeholder="Enter item name" maxLength={50} showCount />
+            <Input
+              placeholder={t('genericModule.form.name.placeholder')}
+              maxLength={50}
+              showCount
+            />
           </Form.Item>
         </Form>
         <Space style={{ width: '100%', justifyContent: 'flex-end' }}>
@@ -72,7 +78,7 @@ export const GenericModuleForm = ({
             disabled={loading}
             icon={<CloseOutlined />}
           >
-            Cancel
+            {t('genericModule.form.cancel')}
           </Button>
           <Button
             type="primary"
@@ -80,7 +86,7 @@ export const GenericModuleForm = ({
             loading={loading}
             icon={<SaveOutlined />}
           >
-            Save
+            {t('genericModule.form.save')}
           </Button>
         </Space>
       </Space>

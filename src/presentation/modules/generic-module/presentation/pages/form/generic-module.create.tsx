@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { MessageHandlerService } from 'src/application'
 import { GenericModule, genericModuleRepository } from '../../../application'
 import { CreateGenericModuleInput } from '../../../application/domain'
+import { useI18nGenericModule } from '../../i18n'
 import { GenericModuleRouteMap } from '../generic-module.routes'
 import { GenericModuleForm } from './generic-module.form'
 
 export const GenericModuleCreate = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
+  const { t } = useI18nGenericModule()
 
   const handleCancel = () => {
     navigate(-1)
@@ -21,12 +23,12 @@ export const GenericModuleCreate = () => {
         name: values.name,
       } as CreateGenericModuleInput
       await genericModuleRepository.create(newGenericModule)
-      MessageHandlerService.success('Item created successfully')
+      MessageHandlerService.success(t('genericModule.create.success'))
       navigate(GenericModuleRouteMap.BasePath)
     } catch (error) {
       MessageHandlerService.error({
         error,
-        defaultMessage: 'Error creating item',
+        defaultMessage: t('genericModule.create.error'),
       })
     } finally {
       setLoading(false)
@@ -35,7 +37,7 @@ export const GenericModuleCreate = () => {
 
   return (
     <GenericModuleForm
-      title="Create Item"
+      title={t('genericModule.create.title')}
       onCancel={handleCancel}
       onFinish={handleFinish}
       loading={loading}

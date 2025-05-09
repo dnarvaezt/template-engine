@@ -1,5 +1,55 @@
 {
   "genericModule": {
-    "title": "melo"
+    "title": "Generic Module",
+    "newItem": "New Item",
+    "table": {
+      "name": "Name",
+      "actions": "Actions",
+      "searchPlaceholder": "Search by name"
+    },
+    "actions": {
+      "view": "View",
+      "edit": "Edit"
+    },
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter item name",
+        "required": "Please enter the name",
+        "min": "Name must be at least 3 characters",
+        "max": "Name cannot exceed 50 characters",
+        "pattern": "Name can only contain letters, numbers and spaces"
+      },
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "create": {
+      "title": "Create Item",
+      "success": "Item created successfully",
+      "error": "Error creating item"
+    },
+    "edit": {
+      "title": "Edit Item",
+      "success": "Item updated successfully",
+      "notFound": "Item not found",
+      "error": "Error updating item. Please try again."
+    },
+    "detail": {
+      "title": "Item Details",
+      "loading": "Loading...",
+      "notFound": "Item not found",
+      "edit": "Edit",
+      "back": "Back",
+      "name": "Name"
+    },
+    "delete": {
+      "button": "Delete",
+      "confirmTitle": "Confirm deletion",
+      "confirmMessage": "Are you sure you want to delete the item \"{name}\"?",
+      "confirmOk": "Delete",
+      "confirmCancel": "Cancel",
+      "success": "Item deleted successfully",
+      "error": "Error deleting item"
+    }
   }
 }

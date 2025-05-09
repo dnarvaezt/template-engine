@@ -1,5 +1,55 @@
 {
   "genericModule": {
-    "title": "muy melo"
+    "title": "Módulo Genérico",
+    "newItem": "Nuevo Ítem",
+    "table": {
+      "name": "Nombre",
+      "actions": "Acciones",
+      "searchPlaceholder": "Buscar por nombre"
+    },
+    "actions": {
+      "view": "Ver",
+      "edit": "Editar"
+    },
+    "form": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Ingrese el nombre del ítem",
+        "required": "Por favor ingrese el nombre",
+        "min": "El nombre debe tener al menos 3 caracteres",
+        "max": "El nombre no puede exceder los 50 caracteres",
+        "pattern": "El nombre solo puede contener letras, números y espacios"
+      },
+      "cancel": "Cancelar",
+      "save": "Guardar"
+    },
+    "create": {
+      "title": "Crear Ítem",
+      "success": "Ítem creado exitosamente",
+      "error": "Error al crear el ítem"
+    },
+    "edit": {
+      "title": "Editar Ítem",
+      "success": "Ítem actualizado exitosamente",
+      "notFound": "Ítem no encontrado",
+      "error": "Error al actualizar el ítem. Por favor intente nuevamente."
+    },
+    "detail": {
+      "title": "Detalles del Ítem",
+      "loading": "Cargando...",
+      "notFound": "Ítem no encontrado",
+      "edit": "Editar",
+      "back": "Volver",
+      "name": "Nombre"
+    },
+    "delete": {
+      "button": "Eliminar",
+      "confirmTitle": "Confirmar eliminación",
+      "confirmMessage": "¿Está seguro de que desea eliminar el ítem \"{name}\"?",
+      "confirmOk": "Eliminar",
+      "confirmCancel": "Cancelar",
+      "success": "Ítem eliminado exitosamente",
+      "error": "Error al eliminar el ítem"
+    }
   }
 }

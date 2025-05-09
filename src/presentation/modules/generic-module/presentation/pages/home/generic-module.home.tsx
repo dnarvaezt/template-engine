@@ -34,7 +34,7 @@ export const GenericModuleHome = () => {
               navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.New))
             }
           >
-            New Item
+            {t('genericModule.newItem')}
           </Button>
         </div>
 

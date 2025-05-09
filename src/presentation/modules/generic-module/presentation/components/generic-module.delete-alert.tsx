@@ -1,9 +1,9 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Button, Modal } from 'antd'
 import { useState } from 'react'
-
 import { MessageHandlerService } from 'src/application'
 import { GenericModule, genericModuleRepository } from '../../application'
+import { useI18nGenericModule } from '../i18n'
 
 interface DeleteGenericModuleButtonProps {
   genericModule: GenericModule
@@ -16,6 +16,7 @@ export const DeleteGenericModuleButton = ({
 }: DeleteGenericModuleButtonProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const { t } = useI18nGenericModule()
 
   const showModal = () => {
     setIsModalVisible(true)
@@ -25,13 +26,13 @@ export const DeleteGenericModuleButton = ({
     setIsLoading(true)
     try {
       await genericModuleRepository.delete(genericModule.id)
-      MessageHandlerService.success('Item deleted successfully')
+      MessageHandlerService.success(t('genericModule.delete.success'))
       setIsModalVisible(false)
       onSuccess?.()
     } catch (error) {
       MessageHandlerService.error({
         error,
-        defaultMessage: 'Error deleting item',
+        defaultMessage: t('genericModule.delete.error'),
       })
     } finally {
       setIsLoading(false)
@@ -45,18 +46,22 @@ export const DeleteGenericModuleButton = ({
   return (
     <>
       <Button type="link" danger onClick={showModal} icon={<DeleteOutlined />}>
-        Delete
+        {t('genericModule.delete.button')}
       </Button>
       <Modal
-        title="Confirm deletion"
+        title={t('genericModule.delete.confirmTitle')}
         open={isModalVisible}
         onOk={handleDelete}
         onCancel={handleCancel}
-        okText="Delete"
-        cancelText="Cancel"
+        okText={t('genericModule.delete.confirmOk')}
+        cancelText={t('genericModule.delete.confirmCancel')}
         confirmLoading={isLoading}
       >
-        <p>Are you sure you want to delete the item "{genericModule.name}"?</p>
+        <p>
+          {t('genericModule.delete.confirmMessage', {
+            name: genericModule.name,
+          })}
+        </p>
       </Modal>
     </>
   )

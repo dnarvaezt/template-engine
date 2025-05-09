@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useI18nGenericModule } from '../../i18n'
 
 import { MessageHandlerService } from 'src/application'
 import { GenericModule, genericModuleRepository } from '../../../application'
@@ -8,7 +9,7 @@ import { GenericModuleForm } from './generic-module.form'
 
 export const GenericModuleEdit = () => {
   const { id, genericModule, loading, setLoading } = useGenericModuleDetail()
-
+  const { t } = useI18nGenericModule()
   const navigate = useNavigate()
 
   const handleCancel = () => {
@@ -25,18 +26,18 @@ export const GenericModuleEdit = () => {
         genericModule.name = values.name
         const updatedGenericModule = genericModule
         await genericModuleRepository.update(updatedGenericModule)
-        MessageHandlerService.success('Item updated successfully')
+        MessageHandlerService.success(t('genericModule.edit.success'))
         navigate(GenericModuleRouteMap.BasePath)
       } else {
         MessageHandlerService.error({
-          defaultMessage: 'Item not found',
+          defaultMessage: t('genericModule.edit.notFound'),
         })
         navigate(GenericModuleRouteMap.BasePath)
       }
     } catch (error) {
       MessageHandlerService.error({
         error,
-        defaultMessage: 'Error updating item. Please try again.',
+        defaultMessage: t('genericModule.edit.error'),
       })
     } finally {
       setLoading(false)
@@ -47,7 +48,7 @@ export const GenericModuleEdit = () => {
 
   return (
     <GenericModuleForm
-      title="Edit Item"
+      title={t('genericModule.edit.title')}
       genericModule={genericModule}
       onCancel={handleCancel}
       onFinish={handleFinish}

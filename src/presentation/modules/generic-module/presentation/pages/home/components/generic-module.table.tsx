@@ -2,6 +2,7 @@ import { EditOutlined, EyeOutlined } from '@ant-design/icons'
 import { Button, Space, Table } from 'antd'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useI18nGenericModule } from '../../../i18n'
 
 import { GenericModule } from 'src/presentation/modules/generic-module/application'
 import { DeleteGenericModuleButton } from '../../../components'
@@ -14,6 +15,7 @@ import { GenericModuleHomeContext } from '../generic-module.home.context'
 export const GenericModuleTable = () => {
   const navigate = useNavigate()
   const { items, loadItems } = useContext(GenericModuleHomeContext)
+  const { t } = useI18nGenericModule()
 
   const goToDetail = (id: string) => {
     navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, { id }))
@@ -25,7 +27,7 @@ export const GenericModuleTable = () => {
 
   const columns = [
     {
-      title: 'Name',
+      title: t('genericModule.table.name'),
       dataIndex: 'name',
       key: 'name',
       width: '100%',
@@ -36,7 +38,7 @@ export const GenericModuleTable = () => {
       ),
     },
     {
-      title: 'Actions',
+      title: t('genericModule.table.actions'),
       key: 'actions',
       render: (_: any, record: GenericModule) => renderActions(record),
     },
@@ -50,14 +52,14 @@ export const GenericModuleTable = () => {
           icon={<EyeOutlined />}
           onClick={() => goToDetail(genericModule.id)}
         >
-          View
+          {t('genericModule.actions.view')}
         </Button>
         <Button
           type="link"
           icon={<EditOutlined />}
           onClick={() => goToEdit(genericModule.id)}
         >
-          Edit
+          {t('genericModule.actions.edit')}
         </Button>
         <DeleteGenericModuleButton
           genericModule={genericModule}
