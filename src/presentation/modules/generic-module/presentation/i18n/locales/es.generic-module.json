@@ -45,7 +45,7 @@
     "delete": {
       "button": "Eliminar",
       "confirmTitle": "Confirmar eliminación",
-      "confirmMessage": "¿Está seguro de que desea eliminar el ítem \"{name}\"?",
+      "confirmMessage": "¿Está seguro de que desea eliminar el ítem \"{{name}}\"?",
       "confirmOk": "Eliminar",
       "confirmCancel": "Cancelar",
       "success": "Ítem eliminado exitosamente",

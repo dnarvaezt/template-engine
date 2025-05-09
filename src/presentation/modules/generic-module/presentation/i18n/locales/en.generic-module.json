@@ -45,7 +45,7 @@
     "delete": {
       "button": "Delete",
       "confirmTitle": "Confirm deletion",
-      "confirmMessage": "Are you sure you want to delete the item \"{name}\"?",
+      "confirmMessage": "Are you sure you want to delete the item \"{{name}}\"?",
       "confirmOk": "Delete",
       "confirmCancel": "Cancel",
       "success": "Item deleted successfully",
