@@ -1,5 +1,6 @@
 import { Button, Typography } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { useI18nGenericModule } from '../../i18n'
 import {
   GenericModuleRouteMap,
   getGenericModuleRouteUrl,
@@ -11,6 +12,7 @@ import { useGenericModuleHome } from './generic-module.home.hook'
 export const GenericModuleHome = () => {
   const navigate = useNavigate()
   const contextValue = useGenericModuleHome()
+  const { t } = useI18nGenericModule()
 
   return (
     <GenericModuleHomeContext.Provider value={contextValue}>
@@ -23,7 +25,9 @@ export const GenericModuleHome = () => {
             alignItems: 'center',
           }}
         >
-          <Typography.Title level={2}>Title</Typography.Title>
+          <Typography.Title level={2}>
+            {t('genericModule.title')}
+          </Typography.Title>
           <Button
             type="primary"
             onClick={() =>
