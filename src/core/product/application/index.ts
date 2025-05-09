@@ -1,5 +1,0 @@
-export * from './product.create.service'
-export * from './product.delete.service'
-export * from './product.get.service'
-export * from './product.search.service'
-export * from './product.update.service'

@@ -1,0 +1,5 @@
+export * from './generic-module.create.service'
+export * from './generic-module.delete.service'
+export * from './generic-module.get.service'
+export * from './generic-module.search.service'
+export * from './generic-module.update.service'
