@@ -3,6 +3,7 @@ import { useI18nGenericModule } from '../../i18n'
 
 import { MessageHandlerService } from 'src/application'
 import { GenericModule, genericModuleRepository } from '../../../application'
+import { GenericModuleNotFound } from '../../components/generic-module.not-found'
 import { useGenericModuleDetail } from '../../hooks'
 import { GenericModuleRouteMap } from '../generic-module.routes'
 import { GenericModuleForm } from './generic-module.form'
@@ -44,7 +45,7 @@ export const GenericModuleEdit = () => {
     }
   }
 
-  if (!genericModule) return null
+  if (!genericModule) return <GenericModuleNotFound />
 
   return (
     <GenericModuleForm

@@ -2,6 +2,7 @@ import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Divider, Space, Typography } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { DeleteGenericModuleButton } from '../../components/generic-module.delete-alert'
+import { GenericModuleNotFound } from '../../components/generic-module.not-found'
 import { useGenericModuleDetail } from '../../hooks'
 import { useI18nGenericModule } from '../../i18n'
 import {
@@ -31,9 +32,7 @@ export const GenericModuleDetail = () => {
     return <div>{t('genericModule.detail.loading')}</div>
   }
 
-  if (!genericModule) {
-    return <div>{t('genericModule.detail.notFound')}</div>
-  }
+  if (!genericModule) return <GenericModuleNotFound />
 
   return (
     <div>

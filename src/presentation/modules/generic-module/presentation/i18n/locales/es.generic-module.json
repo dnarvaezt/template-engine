@@ -40,7 +40,8 @@
       "notFound": "Ítem no encontrado",
       "edit": "Editar",
       "back": "Volver",
-      "name": "Nombre"
+      "name": "Nombre",
+      "backToHome": "Volver al inicio"
     },
     "delete": {
       "button": "Eliminar",
