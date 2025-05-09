@@ -1,3 +1,4 @@
+import { CloseOutlined, SaveOutlined } from '@ant-design/icons'
 import { Button, Card, Form, Input, Space, Typography } from 'antd'
 import { useEffect } from 'react'
 import { GenericModule } from '../../../application'
@@ -39,14 +40,6 @@ export const GenericModuleForm = ({
       <Space direction="vertical" style={{ width: '100%' }}>
         <Space style={{ width: '100%', justifyContent: 'space-between' }}>
           <Typography.Title level={2}>{title}</Typography.Title>
-          <Space>
-            <Button onClick={onCancel} disabled={loading}>
-              Cancel
-            </Button>
-            <Button type="primary" onClick={handleSubmit} loading={loading}>
-              Save
-            </Button>
-          </Space>
         </Space>
         <Form
           form={form}
@@ -73,6 +66,23 @@ export const GenericModuleForm = ({
             <Input placeholder="Enter item name" maxLength={50} showCount />
           </Form.Item>
         </Form>
+        <Space style={{ width: '100%', justifyContent: 'flex-end' }}>
+          <Button
+            onClick={onCancel}
+            disabled={loading}
+            icon={<CloseOutlined />}
+          >
+            Cancel
+          </Button>
+          <Button
+            type="primary"
+            onClick={handleSubmit}
+            loading={loading}
+            icon={<SaveOutlined />}
+          >
+            Save
+          </Button>
+        </Space>
       </Space>
     </Card>
   )

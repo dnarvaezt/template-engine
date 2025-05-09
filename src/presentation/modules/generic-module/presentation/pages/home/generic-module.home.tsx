@@ -1,4 +1,4 @@
-import { Button } from 'antd'
+import { Button, Typography } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import {
   GenericModuleRouteMap,
@@ -15,7 +15,15 @@ export const GenericModuleHome = () => {
   return (
     <GenericModuleHomeContext.Provider value={contextValue}>
       <div>
-        <div style={{ marginBottom: 16 }}>
+        <div
+          style={{
+            marginBottom: 16,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography.Title level={2}>Title</Typography.Title>
           <Button
             type="primary"
             onClick={() =>

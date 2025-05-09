@@ -1,4 +1,5 @@
-import { Button, Space } from 'antd'
+import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons'
+import { Button, Divider, Space, Typography } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { DeleteGenericModuleButton } from '../../components/generic-module.delete-alert'
 import { useGenericModuleDetail } from '../../hooks'
@@ -34,27 +35,38 @@ export const GenericModuleDetail = () => {
 
   return (
     <div>
-      <h1>Item Details {id}</h1>
-      <div style={{ marginBottom: 16 }}>
+      <div>
+        <Space style={{ width: '100%', justifyContent: 'space-between' }}>
+          <Typography.Title level={2}>Item Details</Typography.Title>
+          <Space>
+            <Button
+              type="primary"
+              onClick={handleEdit}
+              disabled={loading}
+              icon={<EditOutlined />}
+            >
+              Edit
+            </Button>
+            <DeleteGenericModuleButton
+              genericModule={genericModule}
+              onSuccess={handleDeleteSuccess}
+            />
+            <Button
+              onClick={() => navigate(GenericModuleRouteMap.BasePath)}
+              disabled={loading}
+              icon={<ArrowLeftOutlined />}
+            >
+              Back
+            </Button>
+          </Space>
+        </Space>
+      </div>
+      <Divider />
+      <div style={{ width: '100%' }}>
         <p>
           <strong>Name:</strong> {genericModule.name}
         </p>
       </div>
-      <Space>
-        <Button type="primary" onClick={handleEdit} disabled={loading}>
-          Edit
-        </Button>
-        <DeleteGenericModuleButton
-          genericModule={genericModule}
-          onSuccess={handleDeleteSuccess}
-        />
-        <Button
-          onClick={() => navigate(GenericModuleRouteMap.BasePath)}
-          disabled={loading}
-        >
-          Back
-        </Button>
-      </Space>
     </div>
   )
 }

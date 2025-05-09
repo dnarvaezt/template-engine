@@ -1,3 +1,4 @@
+import { DeleteOutlined } from '@ant-design/icons'
 import { Button, Modal } from 'antd'
 import { useState } from 'react'
 
@@ -43,7 +44,7 @@ export const DeleteGenericModuleButton = ({
 
   return (
     <>
-      <Button type="link" danger onClick={showModal}>
+      <Button type="link" danger onClick={showModal} icon={<DeleteOutlined />}>
         Delete
       </Button>
       <Modal

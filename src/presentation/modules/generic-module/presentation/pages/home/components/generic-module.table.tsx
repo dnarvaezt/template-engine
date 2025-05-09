@@ -1,3 +1,4 @@
+import { EditOutlined, EyeOutlined } from '@ant-design/icons'
 import { Button, Space, Table } from 'antd'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -14,11 +15,25 @@ export const GenericModuleTable = () => {
   const navigate = useNavigate()
   const { items, loadItems } = useContext(GenericModuleHomeContext)
 
+  const goToDetail = (id: string) => {
+    navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, { id }))
+  }
+
+  const goToEdit = (id: string) => {
+    navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, { id }))
+  }
+
   const columns = [
     {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      width: '100%',
+      render: (text: string, record: GenericModule) => (
+        <Button type="link" onClick={() => goToDetail(record.id)}>
+          {text}
+        </Button>
+      ),
     },
     {
       title: 'Actions',
@@ -32,25 +47,15 @@ export const GenericModuleTable = () => {
       <Space>
         <Button
           type="link"
-          onClick={() =>
-            navigate(
-              getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, {
-                id: genericModule.id,
-              })
-            )
-          }
+          icon={<EyeOutlined />}
+          onClick={() => goToDetail(genericModule.id)}
         >
           View
         </Button>
         <Button
           type="link"
-          onClick={() =>
-            navigate(
-              getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
-                id: genericModule.id,
-              })
-            )
-          }
+          icon={<EditOutlined />}
+          onClick={() => goToEdit(genericModule.id)}
         >
           Edit
         </Button>

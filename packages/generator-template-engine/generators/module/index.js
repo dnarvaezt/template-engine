@@ -12,7 +12,7 @@ module.exports = class extends Generator {
     this._configManager = new Config({
       base: basePath,
       baseName: 'generic-module',
-      template: path.join(basePath, 'src/application/pages/generic-module'),
+      template: path.join(basePath, 'src/presentation/modules/generic-module'),
       destination: process.cwd(),
     })
 
