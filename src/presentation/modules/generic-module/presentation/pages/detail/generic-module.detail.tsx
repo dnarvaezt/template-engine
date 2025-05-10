@@ -1,6 +1,6 @@
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Divider, Space, Typography } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { DeleteGenericModuleButton } from '../../components/generic-module.delete-alert'
 import { GenericModuleNotFound } from '../../components/generic-module.not-found'
 import { useGenericModuleDetail } from '../../hooks'
@@ -42,25 +42,24 @@ export const GenericModuleDetail = () => {
             {t('genericModule.detail.title')}
           </Typography.Title>
           <Space>
-            <Button
-              type="primary"
-              onClick={handleEdit}
-              disabled={loading}
-              icon={<EditOutlined />}
+            <Link
+              to={getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
+                id: genericModule.id,
+              })}
             >
-              {t('genericModule.detail.edit')}
-            </Button>
+              <Button type="primary" disabled={loading} icon={<EditOutlined />}>
+                {t('genericModule.detail.edit')}
+              </Button>
+            </Link>
             <DeleteGenericModuleButton
               genericModule={genericModule}
               onSuccess={handleDeleteSuccess}
             />
-            <Button
-              onClick={() => navigate(GenericModuleRouteMap.BasePath)}
-              disabled={loading}
-              icon={<ArrowLeftOutlined />}
-            >
-              {t('genericModule.detail.back')}
-            </Button>
+            <Link to={GenericModuleRouteMap.BasePath}>
+              <Button disabled={loading} icon={<ArrowLeftOutlined />}>
+                {t('genericModule.detail.back')}
+              </Button>
+            </Link>
           </Space>
         </Space>
       </div>

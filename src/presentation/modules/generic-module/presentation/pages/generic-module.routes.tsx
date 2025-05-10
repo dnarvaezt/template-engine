@@ -1,3 +1,4 @@
+import { AppRouteMap, getAppRouteUrl } from '@app/presentation/routes'
 import { Route, Routes } from 'react-router-dom'
 import { GenericModuleDetail } from './detail/generic-module.detail'
 import { GenericModuleCreate } from './form/generic-module.create'
@@ -41,7 +42,7 @@ export const getGenericModuleRouteUrl = (
 ): string => {
   if (route === GenericModuleRouteMap.BasePath) return route
 
-  let url = `${GenericModuleRouteMap.BasePath}${route}`
+  let url = `${getAppRouteUrl(AppRouteMap.BasePath)}${GenericModuleRouteMap.BasePath}${route}`
 
   if (args)
     Object.entries(args).forEach(([key, value]) => {

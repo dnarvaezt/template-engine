@@ -1,11 +1,10 @@
 import { EditOutlined, EyeOutlined } from '@ant-design/icons'
+import { GenericModule } from '@app/presentation/modules/generic-module/application'
 import { Button, Space, Table } from 'antd'
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useI18nGenericModule } from '../../../i18n'
-
-import { GenericModule } from '@app/presentation/modules/generic-module/application'
+import { Link } from 'react-router-dom'
 import { DeleteGenericModuleButton } from '../../../components'
+import { useI18nGenericModule } from '../../../i18n'
 import {
   GenericModuleRouteMap,
   getGenericModuleRouteUrl,
@@ -13,17 +12,8 @@ import {
 import { GenericModuleHomeContext } from '../generic-module.home.context'
 
 export const GenericModuleTable = () => {
-  const navigate = useNavigate()
   const { items, loadItems } = useContext(GenericModuleHomeContext)
   const { t } = useI18nGenericModule()
-
-  const goToDetail = (id: string) => {
-    navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, { id }))
-  }
-
-  const goToEdit = (id: string) => {
-    navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, { id }))
-  }
 
   const columns = [
     {
@@ -32,9 +22,13 @@ export const GenericModuleTable = () => {
       key: 'name',
       width: '100%',
       render: (text: string, record: GenericModule) => (
-        <Button type="link" onClick={() => goToDetail(record.id)}>
+        <Link
+          to={getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, {
+            id: record.id,
+          })}
+        >
           {text}
-        </Button>
+        </Link>
       ),
     },
     {
@@ -47,20 +41,24 @@ export const GenericModuleTable = () => {
   const renderActions = (genericModule: GenericModule) => {
     return (
       <Space>
-        <Button
-          type="link"
-          icon={<EyeOutlined />}
-          onClick={() => goToDetail(genericModule.id)}
+        <Link
+          to={getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, {
+            id: genericModule.id,
+          })}
         >
-          {t('genericModule.actions.view')}
-        </Button>
-        <Button
-          type="link"
-          icon={<EditOutlined />}
-          onClick={() => goToEdit(genericModule.id)}
+          <Button type="link">
+            <EyeOutlined /> {t('genericModule.actions.view')}
+          </Button>
+        </Link>
+        <Link
+          to={getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
+            id: genericModule.id,
+          })}
         >
-          {t('genericModule.actions.edit')}
-        </Button>
+          <Button type="link">
+            <EditOutlined /> {t('genericModule.actions.edit')}
+          </Button>
+        </Link>
         <DeleteGenericModuleButton
           genericModule={genericModule}
           onSuccess={loadItems}

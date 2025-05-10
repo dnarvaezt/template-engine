@@ -90,13 +90,21 @@ export default {
     isDevelopment && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),
   devServer: {
-    static: path.join(__dirname, 'public'),
+    static: {
+      directory: path.join(__dirname, 'public'),
+      publicPath: '/',
+      serveIndex: false,
+    },
     hot: true,
     open: true,
     historyApiFallback: true,
     port: 3333,
     client: {
       overlay: true,
+    },
+    compress: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
     },
   },
   optimization: {
