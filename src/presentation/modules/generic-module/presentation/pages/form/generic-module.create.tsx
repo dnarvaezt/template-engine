@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MessageHandlerService } from 'src/application'
 import { GenericModule, genericModuleRepository } from '../../../application'
 import { CreateGenericModuleInput } from '../../../application/domain'
 import { useI18nGenericModule } from '../../i18n'
@@ -23,13 +22,9 @@ export const GenericModuleCreate = () => {
         name: values.name,
       } as CreateGenericModuleInput
       await genericModuleRepository.create(newGenericModule)
-      MessageHandlerService.success(t('genericModule.create.success'))
       navigate(GenericModuleRouteMap.BasePath)
     } catch (error) {
-      MessageHandlerService.error({
-        error,
-        defaultMessage: t('genericModule.create.error'),
-      })
+      console.error(error)
     } finally {
       setLoading(false)
     }

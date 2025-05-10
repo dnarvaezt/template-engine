@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useI18nGenericModule } from '../../i18n'
 
-import { MessageHandlerService } from 'src/application'
 import { GenericModule, genericModuleRepository } from '../../../application'
 import { GenericModuleNotFound } from '../../components/generic-module.not-found'
 import { useGenericModuleDetail } from '../../hooks'
@@ -27,19 +26,12 @@ export const GenericModuleEdit = () => {
         genericModule.name = values.name
         const updatedGenericModule = genericModule
         await genericModuleRepository.update(updatedGenericModule)
-        MessageHandlerService.success(t('genericModule.edit.success'))
         navigate(GenericModuleRouteMap.BasePath)
       } else {
-        MessageHandlerService.error({
-          defaultMessage: t('genericModule.edit.notFound'),
-        })
         navigate(GenericModuleRouteMap.BasePath)
       }
     } catch (error) {
-      MessageHandlerService.error({
-        error,
-        defaultMessage: t('genericModule.edit.error'),
-      })
+      console.error(error)
     } finally {
       setLoading(false)
     }

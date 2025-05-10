@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { MessageHandlerService } from 'src/application'
 import { GenericModule, genericModuleRepository } from '../../application'
 
 export const useGenericModuleDetail = () => {
@@ -25,10 +24,7 @@ export const useGenericModuleDetail = () => {
           setError('GenericModule not found')
         }
       } catch (error) {
-        MessageHandlerService.error({
-          error,
-          defaultMessage: 'Error fetching genericModule',
-        })
+        console.error(error)
       } finally {
         setLoading(false)
       }

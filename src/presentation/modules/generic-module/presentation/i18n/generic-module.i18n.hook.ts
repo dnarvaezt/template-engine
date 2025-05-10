@@ -1,4 +1,4 @@
-import { I18nResource, useI18nTranslation } from 'src/presentation/i18n'
+import { I18nResource, useI18nTranslation } from '@app/presentation/i18n'
 import enGenericModule from './locales/en.generic-module.json'
 import esGenericModule from './locales/es.generic-module.json'
 

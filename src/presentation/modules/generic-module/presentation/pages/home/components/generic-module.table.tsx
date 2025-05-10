@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useI18nGenericModule } from '../../../i18n'
 
-import { GenericModule } from 'src/presentation/modules/generic-module/application'
+import { GenericModule } from '@app/presentation/modules/generic-module/application'
 import { DeleteGenericModuleButton } from '../../../components'
 import {
   GenericModuleRouteMap,

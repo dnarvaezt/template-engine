@@ -1,7 +1,6 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Button, Modal } from 'antd'
 import { useState } from 'react'
-import { MessageHandlerService } from 'src/application'
 import { GenericModule, genericModuleRepository } from '../../application'
 import { useI18nGenericModule } from '../i18n'
 
@@ -26,14 +25,10 @@ export const DeleteGenericModuleButton = ({
     setIsLoading(true)
     try {
       await genericModuleRepository.delete(genericModule.id)
-      MessageHandlerService.success(t('genericModule.delete.success'))
       setIsModalVisible(false)
       onSuccess?.()
     } catch (error) {
-      MessageHandlerService.error({
-        error,
-        defaultMessage: t('genericModule.delete.error'),
-      })
+      console.error(error)
     } finally {
       setIsLoading(false)
     }
