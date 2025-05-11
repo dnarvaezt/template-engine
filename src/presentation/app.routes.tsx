@@ -1,9 +1,11 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { GenericModuleModule, GenericModuleRouteMap } from './modules'
+import { getBaseRouteUrl } from './utils'
 
 export enum AppRouteMap {
   BasePath = '/',
+  GenericModule = GenericModuleRouteMap.BasePath,
 }
 
 export const AppRoutes: React.FC = () => {
@@ -11,10 +13,10 @@ export const AppRoutes: React.FC = () => {
     <Routes>
       <Route
         path="/"
-        element={<Navigate to={GenericModuleRouteMap.BasePath} replace />}
+        element={<Navigate to={AppRouteMap.GenericModule} replace />}
       />
       <Route
-        path={`${GenericModuleRouteMap.BasePath}/*`}
+        path={`${AppRouteMap.GenericModule}/*`}
         element={<GenericModuleModule />}
       />
     </Routes>
@@ -25,15 +27,5 @@ export const getAppRouteUrl = (
   route: AppRouteMap,
   args?: Record<string, string | number | boolean>
 ): string => {
-  const location: string = window.location.origin
-  if (route === AppRouteMap.BasePath) return location
-
-  let url = `${location}${route}`
-
-  if (args)
-    Object.entries(args).forEach(([key, value]) => {
-      url = url.replace(`:${key}`, String(value))
-    })
-
-  return url
+  return getBaseRouteUrl(window.location.origin, route, args)
 }

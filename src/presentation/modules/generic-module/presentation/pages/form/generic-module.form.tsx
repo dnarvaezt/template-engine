@@ -4,7 +4,10 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { GenericModule } from '../../../application'
 import { useI18nGenericModule } from '../../i18n'
-import { GenericModuleRouteMap } from '../generic-module.routes'
+import {
+  GenericModuleRouteMap,
+  getGenericModuleRouteUrl,
+} from '../generic-module.routes'
 
 interface GenericModuleFormProps {
   onFinish: (values: GenericModule) => void
@@ -72,7 +75,7 @@ export const GenericModuleForm = ({
         </Form.Item>
       </Form>
       <Space style={{ width: '100%', justifyContent: 'flex-end' }}>
-        <Link to={GenericModuleRouteMap.BasePath}>
+        <Link to={getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath)}>
           <Button disabled={loading} icon={<CloseOutlined />}>
             {t('genericModule.form.cancel')}
           </Button>

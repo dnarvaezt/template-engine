@@ -2,8 +2,8 @@ import { ConfigProvider, Layout, Select, Space, Typography } from 'antd'
 import enUS from 'antd/locale/en_US'
 import esES from 'antd/locale/es_ES'
 import { useTranslation } from 'react-i18next'
-import { BrowserRouter } from 'react-router-dom'
-import { AppRoutes } from './app.routes'
+import { BrowserRouter, Link } from 'react-router-dom'
+import { AppRouteMap, AppRoutes, getAppRouteUrl } from './app.routes'
 import './app.scss'
 import { antdTheme } from './theme/antd.config'
 
@@ -26,12 +26,14 @@ export const App = () => {
           <Header className="app__header">
             <div className="app__header-content">
               <Space align="center">
-                <Typography.Title
-                  level={3}
-                  style={{ margin: 0, color: 'white' }}
-                >
-                  {t('itemManager.title')}
-                </Typography.Title>
+                <Link to={getAppRouteUrl(AppRouteMap.BasePath)}>
+                  <Typography.Title
+                    level={3}
+                    style={{ margin: 0, color: 'white' }}
+                  >
+                    {t('itemManager.title')}
+                  </Typography.Title>
+                </Link>
               </Space>
               <Select
                 defaultValue={i18n.language}

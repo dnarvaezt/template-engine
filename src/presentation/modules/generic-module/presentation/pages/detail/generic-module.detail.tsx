@@ -47,7 +47,7 @@ export const GenericModuleDetail = () => {
             genericModule={genericModule}
             onSuccess={handleDeleteSuccess}
           />
-          <Link to={GenericModuleRouteMap.BasePath}>
+          <Link to={getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath)}>
             <Button disabled={loading} icon={<ArrowLeftOutlined />}>
               {t('genericModule.detail.back')}
             </Button>
