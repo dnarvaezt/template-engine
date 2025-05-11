@@ -4,6 +4,9 @@ import { GenericModuleRoutes } from './generic-module.routes'
 
 export const GenericModuleModule = () => {
   const contextValue = useGenericModuleContext()
+  const { isReady } = contextValue
+
+  if (!isReady) return null
 
   return (
     <GenericModuleContext.Provider value={contextValue}>

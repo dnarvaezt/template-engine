@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom'
-import { useI18nGenericModule } from '../../i18n'
-
 import { GenericModule, genericModuleRepository } from '../../../application'
 import { GenericModuleNotFound } from '../../components/generic-module.not-found'
 import { useGenericModuleDetail } from '../../hooks'
-import { GenericModuleRouteMap } from '../generic-module.routes'
+import { useI18nGenericModule } from '../../i18n'
+import {
+  GenericModuleRouteMap,
+  getGenericModuleRouteUrl,
+} from '../generic-module.routes'
 import { GenericModuleForm } from './generic-module.form'
 
 export const GenericModuleEdit = () => {
@@ -26,9 +28,9 @@ export const GenericModuleEdit = () => {
         genericModule.name = values.name
         const updatedGenericModule = genericModule
         await genericModuleRepository.update(updatedGenericModule)
-        navigate(GenericModuleRouteMap.BasePath)
+        navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))
       } else {
-        navigate(GenericModuleRouteMap.BasePath)
+        navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))
       }
     } catch (error) {
       console.error(error)

@@ -1,8 +1,10 @@
 import { CloseOutlined, SaveOutlined } from '@ant-design/icons'
 import { Button, Card, Form, Input, Space, Typography } from 'antd'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { GenericModule } from '../../../application'
 import { useI18nGenericModule } from '../../i18n'
+import { GenericModuleRouteMap } from '../generic-module.routes'
 
 interface GenericModuleFormProps {
   onCancel: () => void
@@ -73,13 +75,11 @@ export const GenericModuleForm = ({
           </Form.Item>
         </Form>
         <Space style={{ width: '100%', justifyContent: 'flex-end' }}>
-          <Button
-            onClick={onCancel}
-            disabled={loading}
-            icon={<CloseOutlined />}
-          >
-            {t('genericModule.form.cancel')}
-          </Button>
+          <Link to={GenericModuleRouteMap.BasePath}>
+            <Button disabled={loading} icon={<CloseOutlined />}>
+              {t('genericModule.form.cancel')}
+            </Button>
+          </Link>
           <Button
             type="primary"
             onClick={handleSubmit}

@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { GenericModule, genericModuleRepository } from '../../../application'
 import { CreateGenericModuleInput } from '../../../application/domain'
 import { useI18nGenericModule } from '../../i18n'
-import { GenericModuleRouteMap } from '../generic-module.routes'
+import {
+  GenericModuleRouteMap,
+  getGenericModuleRouteUrl,
+} from '../generic-module.routes'
 import { GenericModuleForm } from './generic-module.form'
 
 export const GenericModuleCreate = () => {
@@ -22,7 +25,7 @@ export const GenericModuleCreate = () => {
         name: values.name,
       } as CreateGenericModuleInput
       await genericModuleRepository.create(newGenericModule)
-      navigate(GenericModuleRouteMap.BasePath)
+      navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))
     } catch (error) {
       console.error(error)
     } finally {

@@ -2,7 +2,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { useI18nGenericModule } from '../i18n'
-import { GenericModuleRouteMap } from '../pages'
+import { GenericModuleRouteMap, getGenericModuleRouteUrl } from '../pages'
 
 export const GenericModuleNotFound = () => {
   const { t } = useI18nGenericModule()
@@ -19,7 +19,9 @@ export const GenericModuleNotFound = () => {
     >
       <div>{t('genericModule.detail.notFound')}</div>
       <Button
-        onClick={() => navigate(GenericModuleRouteMap.BasePath)}
+        onClick={() =>
+          navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))
+        }
         icon={<ArrowLeftOutlined />}
       >
         {t('genericModule.detail.backToHome')}

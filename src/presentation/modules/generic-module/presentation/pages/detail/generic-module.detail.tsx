@@ -25,7 +25,7 @@ export const GenericModuleDetail = () => {
   }
 
   const handleDeleteSuccess = () => {
-    navigate(GenericModuleRouteMap.BasePath)
+    navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))
   }
 
   if (loading && !genericModule) {
