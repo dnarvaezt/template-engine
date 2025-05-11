@@ -1,6 +1,6 @@
 import { EditOutlined, EyeOutlined } from '@ant-design/icons'
 import { GenericModule } from '@app/presentation/modules/generic-module/application'
-import { Button, Space, Table } from 'antd'
+import { Button, Space, Table, Tooltip } from 'antd'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { DeleteGenericModuleButton } from '../../../components'
@@ -34,31 +34,32 @@ export const GenericModuleTable = () => {
     {
       title: t('genericModule.table.actions'),
       key: 'actions',
+      width: 200,
       render: (_: any, record: GenericModule) => renderActions(record),
     },
   ]
 
   const renderActions = (genericModule: GenericModule) => {
     return (
-      <Space>
-        <Link
-          to={getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, {
-            id: genericModule.id,
-          })}
-        >
-          <Button type="link">
-            <EyeOutlined /> {t('genericModule.actions.view')}
-          </Button>
-        </Link>
-        <Link
-          to={getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
-            id: genericModule.id,
-          })}
-        >
-          <Button type="link">
-            <EditOutlined /> {t('genericModule.actions.edit')}
-          </Button>
-        </Link>
+      <Space size="middle">
+        <Tooltip title={t('genericModule.actions.view')}>
+          <Link
+            to={getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, {
+              id: genericModule.id,
+            })}
+          >
+            <Button type="text" icon={<EyeOutlined />} />
+          </Link>
+        </Tooltip>
+        <Tooltip title={t('genericModule.actions.edit')}>
+          <Link
+            to={getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
+              id: genericModule.id,
+            })}
+          >
+            <Button type="text" icon={<EditOutlined />} />
+          </Link>
+        </Tooltip>
         <DeleteGenericModuleButton
           genericModule={genericModule}
           onSuccess={loadItems}
@@ -72,7 +73,12 @@ export const GenericModuleTable = () => {
       dataSource={items}
       columns={columns}
       rowKey="id"
-      pagination={{ pageSize: 10 }}
+      pagination={{
+        pageSize: 10,
+        showSizeChanger: true,
+        showTotal: (total) => t('genericModule.table.total', { total }),
+      }}
+      loading={!items}
     />
   )
 }

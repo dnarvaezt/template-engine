@@ -5,7 +5,8 @@
     "table": {
       "name": "Nombre",
       "actions": "Acciones",
-      "searchPlaceholder": "Buscar por nombre"
+      "searchPlaceholder": "Buscar por nombre",
+      "total": "Total {{total}} ítems"
     },
     "actions": {
       "view": "Ver",

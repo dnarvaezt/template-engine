@@ -1,5 +1,5 @@
 import { DeleteOutlined } from '@ant-design/icons'
-import { Button, Modal } from 'antd'
+import { Button, Modal, Typography } from 'antd'
 import { useState } from 'react'
 import { GenericModule, genericModuleRepository } from '../../application'
 import { useI18nGenericModule } from '../i18n'
@@ -52,11 +52,11 @@ export const DeleteGenericModuleButton = ({
         cancelText={t('genericModule.delete.confirmCancel')}
         confirmLoading={isLoading}
       >
-        <p>
+        <Typography.Paragraph>
           {t('genericModule.delete.confirmMessage', {
             name: genericModule.name,
           })}
-        </p>
+        </Typography.Paragraph>
       </Modal>
     </>
   )

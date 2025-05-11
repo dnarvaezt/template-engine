@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons'
-import { Button, Divider, Space, Typography } from 'antd'
+import { Button, Card, Divider, Space, Typography } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import { DeleteGenericModuleButton } from '../../components/generic-module.delete-alert'
 import { GenericModuleNotFound } from '../../components/generic-module.not-found'
@@ -20,14 +20,16 @@ export const GenericModuleDetail = () => {
   }
 
   if (loading && !genericModule) {
-    return <div>{t('genericModule.detail.loading')}</div>
+    return (
+      <Typography.Text>{t('genericModule.detail.loading')}</Typography.Text>
+    )
   }
 
   if (!genericModule) return <GenericModuleNotFound />
 
   return (
-    <div>
-      <div>
+    <Card>
+      <Space direction="vertical" style={{ width: '100%' }}>
         <Space style={{ width: '100%', justifyContent: 'space-between' }}>
           <Typography.Title level={2}>
             {t('genericModule.detail.title')}
@@ -53,14 +55,14 @@ export const GenericModuleDetail = () => {
             </Link>
           </Space>
         </Space>
-      </div>
-      <Divider />
-      <div style={{ width: '100%' }}>
-        <p>
-          <strong>{t('genericModule.detail.name')}:</strong>{' '}
-          {genericModule.name}
-        </p>
-      </div>
-    </div>
+        <Divider />
+        <Space direction="vertical" style={{ width: '100%' }}>
+          <Typography.Text strong>
+            {t('genericModule.detail.name')}:
+          </Typography.Text>
+          <Typography.Text>{genericModule.name}</Typography.Text>
+        </Space>
+      </Space>
+    </Card>
   )
 }

@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined } from '@ant-design/icons'
-import { Button } from 'antd'
+import { Button, Space, Typography } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { useI18nGenericModule } from '../i18n'
 import { GenericModuleRouteMap, getGenericModuleRouteUrl } from '../pages'
@@ -9,15 +9,8 @@ export const GenericModuleNotFound = () => {
   const navigate = useNavigate()
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '16px',
-      }}
-    >
-      <div>{t('genericModule.detail.notFound')}</div>
+    <Space direction="vertical" align="center" size="middle">
+      <Typography.Text>{t('genericModule.detail.notFound')}</Typography.Text>
       <Button
         onClick={() =>
           navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))
@@ -26,6 +19,6 @@ export const GenericModuleNotFound = () => {
       >
         {t('genericModule.detail.backToHome')}
       </Button>
-    </div>
+    </Space>
   )
 }

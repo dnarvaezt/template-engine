@@ -1,5 +1,5 @@
-import { Input } from 'antd'
-import { ChangeEvent } from 'react'
+import { SearchOutlined } from '@ant-design/icons'
+import { Card, Input, Space } from 'antd'
 import { useI18nGenericModule } from '../../../i18n'
 
 interface GenericModuleFilterProps {
@@ -9,17 +9,20 @@ interface GenericModuleFilterProps {
 export const GenericModuleFilter = ({ onSearch }: GenericModuleFilterProps) => {
   const { t } = useI18nGenericModule()
 
-  const handleSearch = async (e: ChangeEvent<HTMLInputElement>) => {
-    await onSearch({ name: e.target.value })
+  const handleSearch = async (value: string) => {
+    await onSearch({ name: value })
   }
 
   return (
-    <div>
-      <Input.Search
-        placeholder={t('genericModule.table.name')}
-        onChange={handleSearch}
-        style={{ marginBottom: 16 }}
-      />
-    </div>
+    <Card size="small" style={{ marginBottom: 16 }}>
+      <Space direction="vertical" style={{ width: '100%' }}>
+        <Input.Search
+          placeholder={t('genericModule.table.name')}
+          onSearch={handleSearch}
+          enterButton={<SearchOutlined />}
+          allowClear
+        />
+      </Space>
+    </Card>
   )
 }
