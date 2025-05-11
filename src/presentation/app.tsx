@@ -3,8 +3,8 @@ import enUS from 'antd/locale/en_US'
 import esES from 'antd/locale/es_ES'
 import { useTranslation } from 'react-i18next'
 import { BrowserRouter } from 'react-router-dom'
+import { AppRoutes } from './app.routes'
 import './app.scss'
-import { AppRoutes } from './routes'
 import { antdTheme } from './theme/antd.config'
 
 const { Header, Content } = Layout

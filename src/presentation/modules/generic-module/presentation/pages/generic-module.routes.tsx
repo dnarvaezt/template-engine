@@ -1,4 +1,4 @@
-import { AppRouteMap, getAppRouteUrl } from '@app/presentation/routes'
+import { AppRouteMap, getAppRouteUrl } from '@app/presentation/app.routes'
 import { Route, Routes } from 'react-router-dom'
 import { GenericModuleDetail } from './detail/generic-module.detail'
 import { GenericModuleCreate } from './form/generic-module.create'
