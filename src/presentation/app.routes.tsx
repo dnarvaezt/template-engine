@@ -27,6 +27,5 @@ export const getAppRouteUrl = (
   pathname: string,
   args?: Record<string, string | number | boolean>
 ): string => {
-  const origin: string = window.location.origin
-  return getBaseRouteUrl(origin, pathname, args)
+  return getBaseRouteUrl(window.location.origin, pathname, args)
 }
