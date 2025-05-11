@@ -12,17 +12,8 @@ import {
 
 export const GenericModuleDetail = () => {
   const navigate = useNavigate()
-  const { id, genericModule, loading } = useGenericModuleDetail()
+  const { genericModule, loading } = useGenericModuleDetail()
   const { t } = useI18nGenericModule()
-
-  const handleEdit = () => {
-    if (genericModule)
-      navigate(
-        getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
-          id: genericModule.id,
-        })
-      )
-  }
 
   const handleDeleteSuccess = () => {
     navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))

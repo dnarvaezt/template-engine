@@ -14,10 +14,6 @@ export const GenericModuleEdit = () => {
   const { t } = useI18nGenericModule()
   const navigate = useNavigate()
 
-  const handleCancel = () => {
-    navigate(-1)
-  }
-
   const handleFinish = async (values: GenericModule) => {
     if (!id) return
 
@@ -25,9 +21,11 @@ export const GenericModuleEdit = () => {
       setLoading(true)
       const genericModule = await genericModuleRepository.getById(id)
       if (genericModule) {
+        if (!values.name?.trim()) return
+
         genericModule.name = values.name
-        const updatedGenericModule = genericModule
-        await genericModuleRepository.update(updatedGenericModule)
+        await genericModuleRepository.update(genericModule)
+
         navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))
       } else {
         navigate(getGenericModuleRouteUrl(GenericModuleRouteMap.BasePath))
@@ -45,7 +43,6 @@ export const GenericModuleEdit = () => {
     <GenericModuleForm
       title={t('genericModule.edit.title')}
       genericModule={genericModule}
-      onCancel={handleCancel}
       onFinish={handleFinish}
       loading={loading}
     />

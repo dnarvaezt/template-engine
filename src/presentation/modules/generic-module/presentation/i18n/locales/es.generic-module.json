@@ -26,13 +26,17 @@
     "create": {
       "title": "Crear Ítem",
       "success": "Ítem creado exitosamente",
-      "error": "Error al crear el ítem"
+      "successDescription": "El ítem ha sido creado exitosamente",
+      "error": "Error al crear el ítem",
+      "errorDescription": "Hubo un error al crear el ítem. Por favor intente nuevamente."
     },
     "edit": {
       "title": "Editar Ítem",
       "success": "Ítem actualizado exitosamente",
+      "successDescription": "El ítem ha sido actualizado exitosamente",
       "notFound": "Ítem no encontrado",
-      "error": "Error al actualizar el ítem. Por favor intente nuevamente."
+      "error": "Error al actualizar el ítem",
+      "errorDescription": "Hubo un error al actualizar el ítem. Por favor intente nuevamente."
     },
     "detail": {
       "title": "Detalles del Ítem",

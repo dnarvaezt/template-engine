@@ -14,10 +14,6 @@ export const GenericModuleCreate = () => {
   const [loading, setLoading] = useState(false)
   const { t } = useI18nGenericModule()
 
-  const handleCancel = () => {
-    navigate(-1)
-  }
-
   const handleFinish = async (values: GenericModule) => {
     try {
       setLoading(true)
@@ -36,7 +32,6 @@ export const GenericModuleCreate = () => {
   return (
     <GenericModuleForm
       title={t('genericModule.create.title')}
-      onCancel={handleCancel}
       onFinish={handleFinish}
       loading={loading}
     />

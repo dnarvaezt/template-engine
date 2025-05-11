@@ -26,13 +26,17 @@
     "create": {
       "title": "Create Item",
       "success": "Item created successfully",
-      "error": "Error creating item"
+      "successDescription": "The item has been created successfully",
+      "error": "Error creating item",
+      "errorDescription": "There was an error while creating the item. Please try again."
     },
     "edit": {
       "title": "Edit Item",
       "success": "Item updated successfully",
+      "successDescription": "The item has been updated successfully",
       "notFound": "Item not found",
-      "error": "Error updating item. Please try again."
+      "error": "Error updating item",
+      "errorDescription": "There was an error while updating the item. Please try again."
     },
     "detail": {
       "title": "Item Details",

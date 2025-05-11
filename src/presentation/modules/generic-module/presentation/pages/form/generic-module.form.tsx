@@ -7,7 +7,6 @@ import { useI18nGenericModule } from '../../i18n'
 import { GenericModuleRouteMap } from '../generic-module.routes'
 
 interface GenericModuleFormProps {
-  onCancel: () => void
   onFinish: (values: GenericModule) => void
   genericModule?: GenericModule
   title: string
@@ -15,7 +14,6 @@ interface GenericModuleFormProps {
 }
 
 export const GenericModuleForm = ({
-  onCancel,
   onFinish,
   genericModule,
   title,
