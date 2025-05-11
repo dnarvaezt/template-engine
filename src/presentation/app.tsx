@@ -1,11 +1,11 @@
 import { ConfigProvider, Select } from 'antd'
-import 'antd/dist/reset.css'
 import enUS from 'antd/locale/en_US'
 import esES from 'antd/locale/es_ES'
 import { useTranslation } from 'react-i18next'
 import { BrowserRouter } from 'react-router-dom'
 import './app.scss'
 import { AppRoutes } from './routes'
+import { theme } from './theme/antd.config'
 
 export const App = () => {
   const { t, i18n } = useTranslation()
@@ -15,7 +15,7 @@ export const App = () => {
   }
 
   return (
-    <ConfigProvider locale={i18n.language === 'es' ? esES : enUS}>
+    <ConfigProvider locale={i18n.language === 'es' ? esES : enUS} theme={theme}>
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
