@@ -1,9 +1,8 @@
-import { EditOutlined, EyeOutlined } from '@ant-design/icons'
+import { EditOutlined } from '@ant-design/icons'
 import { GenericModule } from '@app/presentation/modules/generic-module/application'
 import { Button, Space, Table, Tooltip } from 'antd'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { DeleteGenericModuleButton } from '../../../components'
 import { useI18nGenericModule } from '../../../i18n'
 import {
   GenericModuleRouteMap,
@@ -12,7 +11,7 @@ import {
 import { GenericModuleHomeContext } from '../generic-module.home.context'
 
 export const GenericModuleTable = () => {
-  const { items, loadItems } = useContext(GenericModuleHomeContext)
+  const { items } = useContext(GenericModuleHomeContext)
   const { t } = useI18nGenericModule()
 
   const columns = [
@@ -42,15 +41,6 @@ export const GenericModuleTable = () => {
   const renderActions = (genericModule: GenericModule) => {
     return (
       <Space size="middle">
-        <Tooltip title={t('genericModule.actions.view')}>
-          <Link
-            to={getGenericModuleRouteUrl(GenericModuleRouteMap.Detail, {
-              id: genericModule.id,
-            })}
-          >
-            <Button type="text" icon={<EyeOutlined />} />
-          </Link>
-        </Tooltip>
         <Tooltip title={t('genericModule.actions.edit')}>
           <Link
             to={getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
@@ -60,10 +50,6 @@ export const GenericModuleTable = () => {
             <Button type="text" icon={<EditOutlined />} />
           </Link>
         </Tooltip>
-        <DeleteGenericModuleButton
-          genericModule={genericModule}
-          onSuccess={loadItems}
-        />
       </Space>
     )
   }
