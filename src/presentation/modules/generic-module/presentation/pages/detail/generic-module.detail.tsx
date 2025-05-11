@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons'
-import { Button, Card, Divider, Space, Typography } from 'antd'
+import { Button, Divider, Space, Typography } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import { DeleteGenericModuleButton } from '../../components/generic-module.delete-alert'
 import { GenericModuleNotFound } from '../../components/generic-module.not-found'
@@ -28,41 +28,39 @@ export const GenericModuleDetail = () => {
   if (!genericModule) return <GenericModuleNotFound />
 
   return (
-    <Card>
-      <Space direction="vertical" style={{ width: '100%' }}>
-        <Space style={{ width: '100%', justifyContent: 'space-between' }}>
-          <Typography.Title level={2}>
-            {t('genericModule.detail.title')}
-          </Typography.Title>
-          <Space>
-            <Link
-              to={getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
-                id: genericModule.id,
-              })}
-            >
-              <Button type="primary" disabled={loading} icon={<EditOutlined />}>
-                {t('genericModule.detail.edit')}
-              </Button>
-            </Link>
-            <DeleteGenericModuleButton
-              genericModule={genericModule}
-              onSuccess={handleDeleteSuccess}
-            />
-            <Link to={GenericModuleRouteMap.BasePath}>
-              <Button disabled={loading} icon={<ArrowLeftOutlined />}>
-                {t('genericModule.detail.back')}
-              </Button>
-            </Link>
-          </Space>
-        </Space>
-        <Divider />
-        <Space direction="vertical" style={{ width: '100%' }}>
-          <Typography.Text strong>
-            {t('genericModule.detail.name')}:
-          </Typography.Text>
-          <Typography.Text>{genericModule.name}</Typography.Text>
+    <Space direction="vertical" style={{ width: '100%' }}>
+      <Space style={{ width: '100%', justifyContent: 'space-between' }}>
+        <Typography.Title level={2}>
+          {t('genericModule.detail.title')}
+        </Typography.Title>
+        <Space>
+          <Link
+            to={getGenericModuleRouteUrl(GenericModuleRouteMap.Edit, {
+              id: genericModule.id,
+            })}
+          >
+            <Button type="primary" disabled={loading} icon={<EditOutlined />}>
+              {t('genericModule.detail.edit')}
+            </Button>
+          </Link>
+          <DeleteGenericModuleButton
+            genericModule={genericModule}
+            onSuccess={handleDeleteSuccess}
+          />
+          <Link to={GenericModuleRouteMap.BasePath}>
+            <Button disabled={loading} icon={<ArrowLeftOutlined />}>
+              {t('genericModule.detail.back')}
+            </Button>
+          </Link>
         </Space>
       </Space>
-    </Card>
+      <Divider />
+      <Space direction="vertical" style={{ width: '100%' }}>
+        <Typography.Text strong>
+          {t('genericModule.detail.name')}:
+        </Typography.Text>
+        <Typography.Text>{genericModule.name}</Typography.Text>
+      </Space>
+    </Space>
   )
 }

@@ -1,5 +1,5 @@
 import { CloseOutlined, SaveOutlined } from '@ant-design/icons'
-import { Button, Card, Form, Input, Space, Typography } from 'antd'
+import { Button, Form, Input, Space, Typography } from 'antd'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { GenericModule } from '../../../application'
@@ -38,56 +38,54 @@ export const GenericModuleForm = ({
   }
 
   return (
-    <Card>
-      <Space direction="vertical" style={{ width: '100%' }}>
-        <Space style={{ width: '100%', justifyContent: 'space-between' }}>
-          <Typography.Title level={2}>{title}</Typography.Title>
-        </Space>
-        <Form
-          form={form}
-          layout="vertical"
-          initialValues={genericModule}
-          disabled={loading}
-        >
-          <Form.Item
-            name="name"
-            label={t('genericModule.form.name.label')}
-            rules={[
-              {
-                required: true,
-                message: t('genericModule.form.name.required'),
-              },
-              { min: 3, message: t('genericModule.form.name.min') },
-              { max: 50, message: t('genericModule.form.name.max') },
-              {
-                pattern: /^[a-zA-Z0-9\s]+$/,
-                message: t('genericModule.form.name.pattern'),
-              },
-            ]}
-          >
-            <Input
-              placeholder={t('genericModule.form.name.placeholder')}
-              maxLength={50}
-              showCount
-            />
-          </Form.Item>
-        </Form>
-        <Space style={{ width: '100%', justifyContent: 'flex-end' }}>
-          <Link to={GenericModuleRouteMap.BasePath}>
-            <Button disabled={loading} icon={<CloseOutlined />}>
-              {t('genericModule.form.cancel')}
-            </Button>
-          </Link>
-          <Button
-            type="primary"
-            onClick={handleSubmit}
-            loading={loading}
-            icon={<SaveOutlined />}
-          >
-            {t('genericModule.form.save')}
-          </Button>
-        </Space>
+    <Space direction="vertical" style={{ width: '100%' }}>
+      <Space style={{ width: '100%', justifyContent: 'space-between' }}>
+        <Typography.Title level={2}>{title}</Typography.Title>
       </Space>
-    </Card>
+      <Form
+        form={form}
+        layout="vertical"
+        initialValues={genericModule}
+        disabled={loading}
+      >
+        <Form.Item
+          name="name"
+          label={t('genericModule.form.name.label')}
+          rules={[
+            {
+              required: true,
+              message: t('genericModule.form.name.required'),
+            },
+            { min: 3, message: t('genericModule.form.name.min') },
+            { max: 50, message: t('genericModule.form.name.max') },
+            {
+              pattern: /^[a-zA-Z0-9\s]+$/,
+              message: t('genericModule.form.name.pattern'),
+            },
+          ]}
+        >
+          <Input
+            placeholder={t('genericModule.form.name.placeholder')}
+            maxLength={50}
+            showCount
+          />
+        </Form.Item>
+      </Form>
+      <Space style={{ width: '100%', justifyContent: 'flex-end' }}>
+        <Link to={GenericModuleRouteMap.BasePath}>
+          <Button disabled={loading} icon={<CloseOutlined />}>
+            {t('genericModule.form.cancel')}
+          </Button>
+        </Link>
+        <Button
+          type="primary"
+          onClick={handleSubmit}
+          loading={loading}
+          icon={<SaveOutlined />}
+        >
+          {t('genericModule.form.save')}
+        </Button>
+      </Space>
+    </Space>
   )
 }
