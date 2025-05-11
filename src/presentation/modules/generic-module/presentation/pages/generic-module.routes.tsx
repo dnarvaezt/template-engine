@@ -1,4 +1,4 @@
-import { getAppRouteUrl } from '@app/presentation/app.routes'
+import { getBaseRouteUrl } from '@app/presentation/utils'
 import { Route, Routes } from 'react-router-dom'
 import { GenericModuleDetail } from './detail/generic-module.detail'
 import { GenericModuleCreate } from './form/generic-module.create'
@@ -41,6 +41,5 @@ export const getGenericModuleRouteUrl = (
   args?: Record<string, string | number | boolean>
 ): string => {
   const origin: string = GenericModuleRouteMap.BasePath
-  const pathname: string = route === GenericModuleRouteMap.BasePath ? '' : route
-  return getAppRouteUrl(`${origin}${pathname}`, args)
+  return getBaseRouteUrl(origin, route, args)
 }
