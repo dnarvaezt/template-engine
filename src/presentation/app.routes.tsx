@@ -24,8 +24,9 @@ export const AppRoutes: React.FC = () => {
 }
 
 export const getAppRouteUrl = (
-  route: AppRouteMap,
+  pathname: string,
   args?: Record<string, string | number | boolean>
 ): string => {
-  return getBaseRouteUrl(window.location.origin, route, args)
+  const origin: string = window.location.origin
+  return getBaseRouteUrl(origin, pathname, args)
 }
