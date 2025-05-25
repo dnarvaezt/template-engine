@@ -2,7 +2,7 @@ import { CloseOutlined, SaveOutlined } from '@ant-design/icons'
 import { Button, Form, Input, Space, Typography } from 'antd'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { GenericModule } from '../../../application'
+import { GenericModule } from '../../../core'
 import { useI18nGenericModule } from '../../i18n'
 import {
   GenericModuleRouteMap,

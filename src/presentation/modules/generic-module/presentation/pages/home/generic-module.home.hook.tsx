@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-
-import { GenericModule, genericModuleRepository } from '../../../application'
-import { ErrorFactory } from '../../../application/domain'
+import { GenericModule, genericModuleRepository } from '../../../core'
+import { ErrorFactory } from '../../../core/domain'
 import { GenericModuleHomeContextValue } from './generic-module.home.context'
 
 export const useGenericModuleHome = (): GenericModuleHomeContextValue => {

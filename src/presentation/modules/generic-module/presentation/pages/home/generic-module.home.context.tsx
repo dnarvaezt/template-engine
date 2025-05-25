@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { GenericModule } from '../../../application'
+import { GenericModule } from '../../../core'
 
 export interface GenericModuleHomeContextValue {
   items: GenericModule[]

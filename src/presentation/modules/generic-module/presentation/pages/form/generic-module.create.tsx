@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { GenericModule, genericModuleRepository } from '../../../application'
-import { CreateGenericModuleInput } from '../../../application/domain'
+import { GenericModule, genericModuleRepository } from '../../../core'
+import { CreateGenericModuleInput } from '../../../core/domain'
 import { useI18nGenericModule } from '../../i18n'
 import {
   GenericModuleRouteMap,

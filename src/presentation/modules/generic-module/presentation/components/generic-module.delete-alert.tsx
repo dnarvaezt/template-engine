@@ -1,7 +1,7 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Button, Modal, Typography } from 'antd'
 import { useState } from 'react'
-import { GenericModule, genericModuleRepository } from '../../application'
+import { GenericModule, genericModuleRepository } from '../../core'
 import { useI18nGenericModule } from '../i18n'
 
 interface DeleteGenericModuleButtonProps {

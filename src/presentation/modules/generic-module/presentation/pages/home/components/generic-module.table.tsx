@@ -1,5 +1,5 @@
 import { EditOutlined } from '@ant-design/icons'
-import { GenericModule } from '@app/presentation/modules/generic-module/application'
+import { GenericModule } from '@app/presentation/modules/generic-module/core'
 import { Button, Space, Table, Tooltip } from 'antd'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'

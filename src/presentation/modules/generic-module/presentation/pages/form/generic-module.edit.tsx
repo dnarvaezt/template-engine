@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { GenericModule, genericModuleRepository } from '../../../application'
+import { GenericModule, genericModuleRepository } from '../../../core'
 import { GenericModuleNotFound } from '../../components/generic-module.not-found'
 import { useGenericModuleDetail } from '../../hooks'
 import { useI18nGenericModule } from '../../i18n'

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { GenericModule, genericModuleRepository } from '../../application'
+import { GenericModule, genericModuleRepository } from '../../core'
 
 export const useGenericModuleDetail = () => {
   const { id } = useParams<{ id: string }>()
