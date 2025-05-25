@@ -1,16 +1,16 @@
+import { ErrorFactory } from '../../application/errors/error.factory'
+import { GenericModuleValidator } from '../../application/validators'
 import {
   CreateGenericModuleInput,
   CreateGenericModuleOutput,
   GenericModule,
-  GenericModuleRepository,
-  GenericModuleValidator,
+  IGenericModuleRepository,
   SearchGenericModuleInput,
   SearchGenericModuleOutput,
 } from '../../domain'
-import { ErrorFactory } from '../../domain/errors/error.factory'
 
 export class InMemoryGenericModuleRepository
-  implements GenericModuleRepository
+  implements IGenericModuleRepository
 {
   private modules: GenericModule[] = []
 
@@ -41,7 +41,7 @@ export class InMemoryGenericModuleRepository
     this.modules.splice(index, 1)
   }
 
-  async getById(moduleId: string): Promise<GenericModule | null> {
+  async get(moduleId: string): Promise<GenericModule | null> {
     if (!moduleId) {
       throw ErrorFactory.invalidData({ message: 'Module ID is required' })
     }

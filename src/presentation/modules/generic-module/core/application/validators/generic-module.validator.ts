@@ -1,4 +1,4 @@
-import { GenericModule } from '../entities'
+import { GenericModule } from '../../domain'
 
 export class GenericModuleValidator {
   static validate(genericModule: Partial<GenericModule>): void {

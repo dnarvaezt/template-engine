@@ -6,6 +6,6 @@ export interface SearchGenericModuleOutput {
   data: GenericModule[]
 }
 
-export interface SearchGenericModuleUseCase {
-  execute(args: SearchGenericModuleInput): Promise<SearchGenericModuleOutput>
+export interface ISearchGenericModuleUseCase {
+  search(args: SearchGenericModuleInput): Promise<SearchGenericModuleOutput>
 }

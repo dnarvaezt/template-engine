@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { GenericModule, genericModuleRepository } from '../../../core'
-import { ErrorFactory } from '../../../core/domain'
 import { GenericModuleHomeContextValue } from './generic-module.home.context'
 
 export const useGenericModuleHome = (): GenericModuleHomeContextValue => {
@@ -13,9 +12,7 @@ export const useGenericModuleHome = (): GenericModuleHomeContextValue => {
       const response = await genericModuleRepository.search({})
       setItems(response.data)
     } catch (error) {
-      throw ErrorFactory.genericError('Error loading items', {
-        originalError: error as Error,
-      })
+      throw new Error(`Failed to load items ${error}`)
     } finally {
       setLoading(false)
     }

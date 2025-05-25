@@ -1,19 +1,19 @@
 import {
   GenericModule,
-  GenericModuleRepository,
-  GenericModuleValidator,
+  IGenericModuleRepository,
+  IUpdateGenericModuleUseCase,
   UpdateGenericModuleInput,
-  UpdateGenericModuleUseCase,
-} from '../domain'
-import { ErrorFactory } from '../domain/errors/error.factory'
+} from '../../domain'
+import { ErrorFactory } from '../errors'
+import { GenericModuleValidator } from '../validators'
 
-export class UpdateGenericModuleService implements UpdateGenericModuleUseCase {
-  constructor(private readonly repository: GenericModuleRepository) {}
+export class UpdateGenericModuleUseCase implements IUpdateGenericModuleUseCase {
+  constructor(private readonly repository: IGenericModuleRepository) {}
 
-  async execute(input: UpdateGenericModuleInput): Promise<GenericModule> {
+  async update(input: UpdateGenericModuleInput): Promise<GenericModule> {
     this.validateInput(input)
 
-    const existingModule = await this.repository.getById(input.id)
+    const existingModule = await this.repository.get(input.id)
     if (!existingModule) {
       throw ErrorFactory.notFound({ id: input.id })
     }

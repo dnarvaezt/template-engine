@@ -6,6 +6,6 @@ export interface UpdateGenericModuleInput extends Partial<GenericModule> {
 
 export interface UpdateGenericModuleOutput extends GenericModule {}
 
-export interface UpdateGenericModuleUseCase {
-  execute(item: UpdateGenericModuleInput): Promise<UpdateGenericModuleOutput>
+export interface IUpdateGenericModuleUseCase {
+  update(item: UpdateGenericModuleInput): Promise<UpdateGenericModuleOutput>
 }

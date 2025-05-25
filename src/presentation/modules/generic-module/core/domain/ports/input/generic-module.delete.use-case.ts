@@ -1,3 +1,3 @@
-export interface DeleteGenericModuleUseCase {
-  execute(itemId: string): Promise<void>
+export interface IDeleteGenericModuleUseCase {
+  delete(itemId: string): Promise<void>
 }

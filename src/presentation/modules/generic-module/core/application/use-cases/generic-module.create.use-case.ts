@@ -1,16 +1,16 @@
 import {
   CreateGenericModuleInput,
   CreateGenericModuleOutput,
-  CreateGenericModuleUseCase,
-  GenericModuleRepository,
-  GenericModuleValidator,
-} from '../domain'
-import { ErrorFactory } from '../domain/errors/error.factory'
+  ICreateGenericModuleUseCase,
+  IGenericModuleRepository,
+} from '../../domain'
+import { ErrorFactory } from '../errors'
+import { GenericModuleValidator } from '../validators'
 
-export class CreateGenericModuleService implements CreateGenericModuleUseCase {
-  constructor(private readonly repository: GenericModuleRepository) {}
+export class CreateGenericModuleUseCase implements ICreateGenericModuleUseCase {
+  constructor(private readonly repository: IGenericModuleRepository) {}
 
-  async execute(
+  async create(
     input: CreateGenericModuleInput
   ): Promise<CreateGenericModuleOutput> {
     try {

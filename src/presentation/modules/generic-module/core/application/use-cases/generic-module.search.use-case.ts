@@ -1,17 +1,17 @@
 import {
-  GenericModuleRepository,
+  IGenericModuleRepository,
+  ISearchGenericModuleUseCase,
   SearchGenericModuleInput,
   SearchGenericModuleOutput,
-  SearchGenericModuleUseCase,
-} from '../domain'
-import { ErrorFactory } from '../domain/errors/error.factory'
+} from '../../domain'
+import { ErrorFactory } from '../errors/error.factory'
 
-export class SearchGenericModuleService implements SearchGenericModuleUseCase {
+export class SearchGenericModuleUseCase implements ISearchGenericModuleUseCase {
   constructor(
-    private readonly genericModuleRepository: GenericModuleRepository
+    private readonly genericModuleRepository: IGenericModuleRepository
   ) {}
 
-  async execute(
+  async search(
     args: SearchGenericModuleInput
   ): Promise<SearchGenericModuleOutput> {
     try {

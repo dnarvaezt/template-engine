@@ -1,0 +1,5 @@
+export * from './generic-module.create.use-case'
+export * from './generic-module.delete.use-case'
+export * from './generic-module.get.use-case'
+export * from './generic-module.search.use-case'
+export * from './generic-module.update.use-case'

@@ -19,7 +19,7 @@ export const GenericModuleEdit = () => {
 
     try {
       setLoading(true)
-      const genericModule = await genericModuleRepository.getById(id)
+      const genericModule = await genericModuleRepository.get(id)
       if (genericModule) {
         if (!values.name?.trim()) return
 

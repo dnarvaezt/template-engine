@@ -6,6 +6,6 @@ export interface CreateGenericModuleInput {
 
 export interface CreateGenericModuleOutput extends GenericModule {}
 
-export interface CreateGenericModuleUseCase {
-  execute(item: CreateGenericModuleInput): Promise<CreateGenericModuleOutput>
+export interface ICreateGenericModuleUseCase {
+  create(item: CreateGenericModuleInput): Promise<CreateGenericModuleOutput>
 }

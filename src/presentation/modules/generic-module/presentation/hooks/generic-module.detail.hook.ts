@@ -17,7 +17,7 @@ export const useGenericModuleDetail = () => {
 
       try {
         setLoading(true)
-        const fetchedGenericModule = await genericModuleRepository.getById(id)
+        const fetchedGenericModule = await genericModuleRepository.get(id)
         if (fetchedGenericModule) {
           setGenericModule(fetchedGenericModule)
         } else {
